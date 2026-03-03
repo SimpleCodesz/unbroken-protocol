@@ -113,6 +113,7 @@ superpower-clone/
 13. Apply CTA (dark card, 4 steps)
 14. Application Form (Netlify Forms, 7 questions + name/email, tier pre-select)
 15. Lead Magnet (Recovery Readiness Assessment email capture, Netlify Forms)
-16. FAQ (2 groups: The Coaching, The Method)
-17. Partners bar
-18. Footer (4 columns + copyright)
+16. Blog / Insights (7 Medium articles, horizontal carousel, dark/copper/grey cards)
+17. FAQ (2 groups: The Coaching, The Method)
+18. Partners bar
+19. Footer (4 columns + copyright)

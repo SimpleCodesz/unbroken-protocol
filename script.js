@@ -129,7 +129,8 @@ const revealObserver = new IntersectionObserver((entries) => {
       const isCard = entry.target.classList.contains('problem-card') ||
                      entry.target.classList.contains('race-card') ||
                      entry.target.classList.contains('coaching-card') ||
-                     entry.target.classList.contains('testimonial-card');
+                     entry.target.classList.contains('testimonial-card') ||
+                     entry.target.classList.contains('blog-card');
 
       if (isCard && parent) {
         const siblings = Array.from(parent.children).filter(c =>
@@ -145,7 +146,7 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-const revealElements = document.querySelectorAll('section:not(.hero):not(.stats-bar), .philosophy-quote, .problem-card, .race-card, .coaching-card, .testimonial-card, .pricing-card-v2, .faq-group, .about-grid, .apply-card, .form-card, .lead-magnet-card');
+const revealElements = document.querySelectorAll('section:not(.hero):not(.stats-bar), .philosophy-quote, .problem-card, .race-card, .coaching-card, .testimonial-card, .blog-card, .pricing-card-v2, .faq-group, .about-grid, .apply-card, .form-card, .lead-magnet-card');
 revealElements.forEach(el => {
   el.classList.add('scroll-reveal');
   revealObserver.observe(el);
