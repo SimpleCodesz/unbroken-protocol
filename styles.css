@@ -390,12 +390,52 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--border);
 }
 
+.stats-bar .container {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  max-width: 1100px;
+}
+
 .stats-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 32px;
+}
+
+/* ===== PARTNERS ===== */
+.partners {
+  padding: 48px 0;
+  background: var(--bg-grey);
+  border-top: 1px solid var(--border);
+}
+
+.partners-heading {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.partners-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
   flex-wrap: wrap;
+}
+
+.partner-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .stat-item {
@@ -574,55 +614,48 @@ img { max-width: 100%; display: block; }
 }
 
 .race-grid {
-  margin-top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
 }
 
 .race-card {
-  min-width: 380px;
-  max-width: 380px;
-  background: var(--bg-grey);
-  border: none;
   border-radius: var(--radius);
-  padding: 36px;
+  padding: 40px;
   transition: box-shadow 0.3s;
-  scroll-snap-align: start;
-  flex-shrink: 0;
 }
 
 .race-card:hover {
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .race-letter {
   font-family: var(--font-display);
-  font-size: 48px;
+  font-size: 52px;
   font-weight: 600;
-  color: var(--accent);
   line-height: 1;
   margin-bottom: 8px;
 }
 
 .race-card h3 {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
-  color: var(--text-primary);
   margin-bottom: 4px;
   letter-spacing: -0.02em;
 }
 
 .race-subtitle {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .race-card > p {
   font-size: 15px;
-  color: var(--text-secondary);
   line-height: 1.47;
 }
 
@@ -630,25 +663,89 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 16px 0;
+  margin: 20px 0;
 }
 
 .race-tools span {
   font-size: 12px;
   font-weight: 500;
   padding: 5px 12px;
-  background: var(--accent-light);
-  color: var(--accent);
   border-radius: var(--radius-pill);
 }
 
 .race-shift {
   font-size: 14px;
-  color: var(--text-primary);
   line-height: 1.47;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
+  padding-top: 16px;
   margin-top: 4px;
+}
+
+/* R — Deep Blue (Apple Blue) */
+.race-blue {
+  background: #0071E3;
+}
+.race-blue .race-letter { color: rgba(255,255,255,0.3); }
+.race-blue h3 { color: #fff; }
+.race-blue .race-subtitle { color: rgba(255,255,255,0.6); }
+.race-blue > p { color: rgba(255,255,255,0.75); }
+.race-blue .race-tools span {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+}
+.race-blue .race-shift {
+  color: rgba(255,255,255,0.85);
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+/* A — Deep Green (Apple Green) */
+.race-green {
+  background: #2D7D46;
+}
+.race-green .race-letter { color: rgba(255,255,255,0.3); }
+.race-green h3 { color: #fff; }
+.race-green .race-subtitle { color: rgba(255,255,255,0.6); }
+.race-green > p { color: rgba(255,255,255,0.75); }
+.race-green .race-tools span {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+}
+.race-green .race-shift {
+  color: rgba(255,255,255,0.85);
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+/* C — Warm Amber */
+.race-amber {
+  background: var(--bg-grey);
+}
+.race-amber .race-letter { color: var(--accent); }
+.race-amber h3 { color: var(--text-primary); }
+.race-amber .race-subtitle { color: var(--accent); }
+.race-amber > p { color: var(--text-secondary); }
+.race-amber .race-tools span {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.race-amber .race-shift {
+  color: var(--text-primary);
+  border-top: 1px solid var(--border);
+}
+
+/* E — Space Black (Apple Dark) */
+.race-dark {
+  background: var(--bg-dark);
+}
+.race-dark .race-letter { color: rgba(255,255,255,0.2); }
+.race-dark h3 { color: var(--text-on-dark); }
+.race-dark .race-subtitle { color: var(--accent); }
+.race-dark > p { color: var(--text-on-dark-sub); }
+.race-dark .race-tools span {
+  background: rgba(255,255,255,0.08);
+  color: var(--text-on-dark-sub);
+}
+.race-dark .race-shift {
+  color: var(--text-on-dark);
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 /* ===== COACHING / WHAT YOU RECEIVE ===== */
@@ -1228,10 +1325,17 @@ img { max-width: 100%; display: block; }
   .hero h1 { font-size: 30px; }
   .hero-ctas { flex-direction: column; align-items: center; }
 
-  .stats-row { flex-direction: column; gap: 20px; }
-  .stat-divider { width: 40px; height: 1px; }
+  .stats-bar .container { gap: 24px; }
+  .stats-bar { padding: 32px 0; }
+  .stats-row { flex-wrap: wrap; gap: 20px; }
+  .stat-divider { display: none; }
+  .stat-number { font-size: 22px; }
+  .stat-label { font-size: 11px; }
+  .partners-row { gap: 28px; }
+  .partner-name { font-size: 16px; }
 
-  .problem-card, .race-card, .coaching-card { min-width: 280px; max-width: 280px; }
+  .race-grid { grid-template-columns: 1fr; }
+  .problem-card, .coaching-card { min-width: 280px; max-width: 280px; }
   .apply-card { padding: 40px 24px; }
   .apply-steps { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
