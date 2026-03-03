@@ -107,9 +107,12 @@ superpower-clone/
 7. R.A.C.E. Framework (4 cards, horizontal carousel)
 8. What You Receive (8 coaching cards, horizontal carousel)
 9. About / Credentials (photo + details + E-E-A-T credentials grid)
-10. Is This For You (dark section, two columns)
-11. Pricing (2 cards: Foundation £650/mo, Premium £2,000/mo)
-12. Apply CTA (dark card, 4 steps)
-13. FAQ (2 groups: The Coaching, The Method)
-14. Partners bar
-15. Footer (4 columns + copyright)
+10. Testimonials (3 cards, horizontal carousel, dark/copper/grey variants)
+11. Is This For You (dark section, two columns)
+12. Pricing (3 tiers: Recover £597/mo, Condition £997/mo, Execute £1,997/mo)
+13. Apply CTA (dark card, 4 steps)
+14. Application Form (Netlify Forms, 7 questions + name/email, tier pre-select)
+15. Lead Magnet (Recovery Readiness Assessment email capture, Netlify Forms)
+16. FAQ (2 groups: The Coaching, The Method)
+17. Partners bar
+18. Footer (4 columns + copyright)

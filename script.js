@@ -128,7 +128,8 @@ const revealObserver = new IntersectionObserver((entries) => {
       const parent = entry.target.parentElement;
       const isCard = entry.target.classList.contains('problem-card') ||
                      entry.target.classList.contains('race-card') ||
-                     entry.target.classList.contains('coaching-card');
+                     entry.target.classList.contains('coaching-card') ||
+                     entry.target.classList.contains('testimonial-card');
 
       if (isCard && parent) {
         const siblings = Array.from(parent.children).filter(c =>
@@ -144,7 +145,7 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-const revealElements = document.querySelectorAll('section:not(.hero):not(.stats-bar), .philosophy-quote, .problem-card, .race-card, .coaching-card, .pricing-card-v2, .faq-group, .about-grid, .apply-card');
+const revealElements = document.querySelectorAll('section:not(.hero):not(.stats-bar), .philosophy-quote, .problem-card, .race-card, .coaching-card, .testimonial-card, .pricing-card-v2, .faq-group, .about-grid, .apply-card, .form-card, .lead-magnet-card');
 revealElements.forEach(el => {
   el.classList.add('scroll-reveal');
   revealObserver.observe(el);
@@ -190,3 +191,107 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 300 + (i * 200)); // 300ms initial delay, 200ms between elements
   });
 });
+
+// ===== TIER PRE-SELECTION =====
+function preselectTier(tierName) {
+  const tierRadio = document.querySelector('input[name="tier-interest"][value="' + tierName + '"]');
+  const tierHidden = document.getElementById('tierField');
+  if (tierRadio) tierRadio.checked = true;
+  if (tierHidden) tierHidden.value = tierName;
+}
+
+// Pricing tier buttons → scroll to form + pre-select tier
+document.querySelectorAll('[data-tier]').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const tier = this.dataset.tier;
+    preselectTier(tier);
+    const formSection = document.getElementById('apply-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ===== APPLICATION FORM — AJAX SUBMISSION =====
+const applicationForm = document.getElementById('applicationForm');
+const formSuccess = document.getElementById('formSuccess');
+
+if (applicationForm) {
+  applicationForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const submitBtn = this.querySelector('.form-submit');
+    if (submitBtn) {
+      submitBtn.textContent = 'Submitting…';
+      submitBtn.disabled = true;
+    }
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(function(response) {
+      if (response.ok) {
+        applicationForm.style.display = 'none';
+        formSuccess.style.display = 'block';
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        if (submitBtn) {
+          submitBtn.innerHTML = 'Submit Application <span class="btn-arrow">&rsaquo;</span>';
+          submitBtn.disabled = false;
+        }
+        alert('There was an issue submitting your application. Please try again or email welcome@unbrokenclub.com directly.');
+      }
+    })
+    .catch(function() {
+      if (submitBtn) {
+        submitBtn.innerHTML = 'Submit Application <span class="btn-arrow">&rsaquo;</span>';
+        submitBtn.disabled = false;
+      }
+      alert('There was an issue submitting your application. Please try again or email welcome@unbrokenclub.com directly.');
+    });
+  });
+}
+
+// ===== LEAD MAGNET FORM — AJAX SUBMISSION =====
+const leadForm = document.getElementById('leadMagnetForm');
+const leadSuccess = document.getElementById('leadMagnetSuccess');
+
+if (leadForm) {
+  leadForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const submitBtn = this.querySelector('.lead-magnet-btn');
+    if (submitBtn) {
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+    }
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(function(response) {
+      if (response.ok) {
+        leadForm.style.display = 'none';
+        leadSuccess.style.display = 'block';
+      } else {
+        if (submitBtn) {
+          submitBtn.innerHTML = 'Get the Assessment <span class="btn-arrow">&rsaquo;</span>';
+          submitBtn.disabled = false;
+        }
+        alert('There was an issue. Please try again.');
+      }
+    })
+    .catch(function() {
+      if (submitBtn) {
+        submitBtn.innerHTML = 'Get the Assessment <span class="btn-arrow">&rsaquo;</span>';
+        submitBtn.disabled = false;
+      }
+      alert('There was an issue. Please try again.');
+    });
+  });
+}
