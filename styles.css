@@ -650,17 +650,18 @@ img { max-width: 100%; display: block; }
   background: var(--bg-white);
 }
 
-.race-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 48px;
+.race-track {
+  margin-top: 0;
 }
 
 .race-card {
+  min-width: 420px;
+  max-width: 420px;
   border-radius: var(--radius);
   padding: 40px;
   transition: box-shadow 0.3s;
+  scroll-snap-align: start;
+  flex-shrink: 0;
 }
 
 .race-card:hover {
@@ -719,7 +720,7 @@ img { max-width: 100%; display: block; }
 
 /* R — Pure Black */
 .race-blue {
-  background: var(--bg-black);
+  background: linear-gradient(145deg, #1D1D1F 0%, #0A0A0A 50%, #000000 100%);
 }
 .race-blue .race-letter { color: rgba(255,255,255,0.2); }
 .race-blue h3 { color: var(--text-on-dark); }
@@ -736,7 +737,7 @@ img { max-width: 100%; display: block; }
 
 /* A — Copper Gold */
 .race-green {
-  background: var(--accent);
+  background: linear-gradient(145deg, #D4893A 0%, #C47A2A 45%, #A8661F 100%);
 }
 .race-green .race-letter { color: rgba(255,255,255,0.3); }
 .race-green h3 { color: #fff; }
@@ -753,7 +754,7 @@ img { max-width: 100%; display: block; }
 
 /* C — Warm Amber */
 .race-amber {
-  background: var(--bg-grey);
+  background: linear-gradient(145deg, #FFFFFF 0%, #F5F5F7 50%, #EBEBED 100%);
 }
 .race-amber .race-letter { color: var(--accent); }
 .race-amber h3 { color: var(--text-primary); }
@@ -770,7 +771,7 @@ img { max-width: 100%; display: block; }
 
 /* E — Space Black (Apple Dark) */
 .race-dark {
-  background: var(--bg-dark);
+  background: linear-gradient(145deg, #2C2C2E 0%, #1D1D1F 40%, #111111 100%);
 }
 .race-dark .race-letter { color: rgba(255,255,255,0.2); }
 .race-dark h3 { color: var(--text-on-dark); }
@@ -1371,7 +1372,7 @@ img { max-width: 100%; display: block; }
   .partners-row { gap: 28px; }
   .partner-name { font-size: 16px; }
 
-  .race-grid { grid-template-columns: 1fr; }
+  .race-card { min-width: 320px; max-width: 320px; padding: 32px; }
   .problem-card { min-width: 300px; max-width: 300px; min-height: auto; }
   .coaching-card { min-width: 280px; max-width: 280px; }
   .apply-card { padding: 40px 24px; }
