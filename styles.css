@@ -587,37 +587,37 @@ img { max-width: 100%; display: block; }
 }
 
 /* Problem card dark — space black */
-.problem-dark { background: var(--bg-dark); }
+.problem-dark { background: linear-gradient(145deg, #2C2C2E 0%, #1D1D1F 40%, #111111 100%); }
 .problem-dark .problem-icon { background: rgba(255,255,255,0.1); color: var(--accent); }
 .problem-dark h3 { color: var(--text-on-dark); }
 .problem-dark p { color: var(--text-on-dark-sub); }
 
 /* Problem card copper */
-.problem-copper { background: var(--accent); }
+.problem-copper { background: linear-gradient(145deg, #D4893A 0%, #C47A2A 45%, #A8661F 100%); }
 .problem-copper .problem-icon { background: rgba(255,255,255,0.2); color: #fff; }
 .problem-copper h3 { color: #fff; }
-.problem-copper p { color: rgba(255,255,255,0.75); }
+.problem-copper p { color: rgba(255,255,255,0.8); }
 
 /* Problem card grey — warm light */
-.problem-grey { background: var(--bg-grey); }
+.problem-grey { background: linear-gradient(145deg, #FFFFFF 0%, #F5F5F7 50%, #EBEBED 100%); }
 .problem-grey .problem-icon { background: var(--accent-light); color: var(--accent); }
 .problem-grey h3 { color: var(--text-primary); }
 .problem-grey p { color: var(--text-secondary); }
 
 /* Problem card charcoal */
-.problem-charcoal { background: #2C2C2E; }
+.problem-charcoal { background: linear-gradient(145deg, #3A3A3C 0%, #2C2C2E 45%, #1C1C1E 100%); }
 .problem-charcoal .problem-icon { background: rgba(196,122,42,0.2); color: var(--accent); }
 .problem-charcoal h3 { color: var(--text-on-dark); }
 .problem-charcoal p { color: var(--text-on-dark-sub); }
 
 /* Problem card warm — ivory */
-.problem-warm { background: var(--bg-ivory); }
+.problem-warm { background: linear-gradient(145deg, #FFFFFF 0%, #FAF8F5 50%, #F0EBE3 100%); }
 .problem-warm .problem-icon { background: var(--accent-light); color: var(--accent); }
 .problem-warm h3 { color: var(--text-primary); }
 .problem-warm p { color: var(--text-secondary); }
 
 /* Problem card black */
-.problem-black { background: var(--bg-black); }
+.problem-black { background: linear-gradient(145deg, #1D1D1F 0%, #0A0A0A 50%, #000000 100%); }
 .problem-black .problem-icon { background: rgba(196,122,42,0.15); color: var(--accent); }
 .problem-black h3 { color: var(--text-on-dark); }
 .problem-black p { color: var(--text-on-dark-sub); }
