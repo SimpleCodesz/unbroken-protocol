@@ -6,12 +6,16 @@
 }
 
 :root {
-  /* Apple color system */
+  /* Deep Teal + Copper palette */
   --accent: #C47A2A;
   --accent-hover: #a8661f;
   --accent-light: rgba(196, 122, 42, 0.08);
+  --teal: #1A6B6A;
+  --teal-light: #2A8C8A;
+  --teal-subtle: rgba(26, 107, 106, 0.08);
 
   --bg-white: #FFFFFF;
+  --bg-ivory: #FAF8F5;
   --bg-grey: #F5F5F7;
   --bg-grey-mid: #E8E8ED;
   --bg-dark: #1D1D1F;
@@ -680,9 +684,9 @@ img { max-width: 100%; display: block; }
   margin-top: 4px;
 }
 
-/* R — Deep Blue (Apple Blue) */
+/* R — Deep Teal */
 .race-blue {
-  background: #0071E3;
+  background: var(--teal);
 }
 .race-blue .race-letter { color: rgba(255,255,255,0.3); }
 .race-blue h3 { color: #fff; }
@@ -697,9 +701,9 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid rgba(255,255,255,0.15);
 }
 
-/* A — Deep Green (Apple Green) */
+/* A — Sage Teal */
 .race-green {
-  background: #2D7D46;
+  background: var(--teal-light);
 }
 .race-green .race-letter { color: rgba(255,255,255,0.3); }
 .race-green h3 { color: #fff; }
