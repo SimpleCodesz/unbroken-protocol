@@ -89,6 +89,37 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// ===== CAROUSEL ARROWS =====
+document.querySelectorAll('.carousel-wrap').forEach(wrap => {
+  const track = wrap.querySelector('.carousel-track');
+  const prev = wrap.querySelector('.carousel-prev');
+  const next = wrap.querySelector('.carousel-next');
+  if (!track || !prev || !next) return;
+
+  const scrollAmount = () => {
+    const card = track.querySelector(':scope > *');
+    return card ? card.offsetWidth + 20 : 360;
+  };
+
+  const updateArrows = () => {
+    prev.classList.toggle('hidden', track.scrollLeft <= 10);
+    next.classList.toggle('hidden', track.scrollLeft >= track.scrollWidth - track.clientWidth - 10);
+  };
+
+  prev.addEventListener('click', () => {
+    track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+  });
+
+  next.addEventListener('click', () => {
+    track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+  });
+
+  track.addEventListener('scroll', updateArrows, { passive: true });
+  updateArrows();
+  // Re-check after layout settles
+  setTimeout(updateArrows, 100);
+});
+
 // ===== APPLE-STYLE SCROLL REVEAL =====
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
