@@ -199,7 +199,9 @@ img { max-width: 100%; display: block; }
   top: 72px;
   left: 16px;
   right: 16px;
-  background: var(--nav-bg);
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-radius: var(--radius);
   padding: 16px;
   z-index: 999;
