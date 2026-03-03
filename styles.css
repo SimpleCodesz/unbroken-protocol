@@ -796,41 +796,71 @@ img { max-width: 100%; display: block; }
 }
 
 .coaching-card {
-  min-width: 340px;
-  max-width: 340px;
-  padding: var(--space-xl);
-  background: var(--bg-white);
+  min-width: 420px;
+  max-width: 420px;
+  padding: 40px;
   border-radius: var(--radius);
-  border: none;
   transition: box-shadow 0.3s;
   scroll-snap-align: start;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .coaching-card:hover {
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .coaching-num {
   font-size: 13px;
   font-weight: 700;
-  color: var(--accent);
   margin-bottom: 12px;
   letter-spacing: 1px;
 }
 
 .coaching-card h3 {
-  font-size: 18px;
+  font-family: var(--font-display);
+  font-size: 28px;
   font-weight: 600;
-  color: var(--dark);
   margin-bottom: 8px;
+  letter-spacing: -0.02em;
 }
 
 .coaching-card p {
   font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.47;
+  line-height: 1.5;
 }
+
+/* Coaching card colours */
+.coach-dark { background: linear-gradient(145deg, #2C2C2E 0%, #1D1D1F 40%, #111111 100%); }
+.coach-dark .coaching-num { color: var(--accent); }
+.coach-dark h3 { color: var(--text-on-dark); }
+.coach-dark p { color: var(--text-on-dark-sub); }
+
+.coach-copper { background: linear-gradient(145deg, #D4893A 0%, #C47A2A 45%, #A8661F 100%); }
+.coach-copper .coaching-num { color: rgba(255,255,255,0.6); }
+.coach-copper h3 { color: #fff; }
+.coach-copper p { color: rgba(255,255,255,0.8); }
+
+.coach-grey { background: linear-gradient(145deg, #FFFFFF 0%, #F5F5F7 50%, #EBEBED 100%); }
+.coach-grey .coaching-num { color: var(--accent); }
+.coach-grey h3 { color: var(--text-primary); }
+.coach-grey p { color: var(--text-secondary); }
+
+.coach-charcoal { background: linear-gradient(145deg, #3A3A3C 0%, #2C2C2E 45%, #1C1C1E 100%); }
+.coach-charcoal .coaching-num { color: var(--accent); }
+.coach-charcoal h3 { color: var(--text-on-dark); }
+.coach-charcoal p { color: var(--text-on-dark-sub); }
+
+.coach-warm { background: linear-gradient(145deg, #FFFFFF 0%, #FAF8F5 50%, #F0EBE3 100%); }
+.coach-warm .coaching-num { color: var(--accent); }
+.coach-warm h3 { color: var(--text-primary); }
+.coach-warm p { color: var(--text-secondary); }
+
+.coach-black { background: linear-gradient(145deg, #1D1D1F 0%, #0A0A0A 50%, #000000 100%); }
+.coach-black .coaching-num { color: var(--accent); }
+.coach-black h3 { color: var(--text-on-dark); }
+.coach-black p { color: var(--text-on-dark-sub); }
 
 /* ===== ABOUT ===== */
 .about {
@@ -1373,7 +1403,7 @@ img { max-width: 100%; display: block; }
 
   .race-card { min-width: 320px; max-width: 320px; padding: 32px; }
   .problem-card { min-width: 320px; max-width: 320px; padding: 32px; }
-  .coaching-card { min-width: 280px; max-width: 280px; }
+  .coaching-card { min-width: 320px; max-width: 320px; padding: 32px; }
   .apply-card { padding: 40px 24px; }
   .apply-steps { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
