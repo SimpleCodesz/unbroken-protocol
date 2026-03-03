@@ -197,6 +197,8 @@ img { max-width: 100%; display: block; }
   text-align: center;
   overflow: hidden;
   background: #000;
+  border-radius: 24px;
+  margin: 68px 16px 0;
 }
 
 .hero-video {
@@ -361,12 +363,25 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.stat-item.stat-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .stat-number {
   font-size: 28px;
   font-weight: 700;
   color: var(--dark);
+}
+
+.stat-number:not([data-count]) {
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
 .stat-label {
