@@ -713,21 +713,21 @@ img { max-width: 100%; display: block; }
   margin-top: 4px;
 }
 
-/* R — Deep Teal */
+/* R — Pure Black */
 .race-blue {
-  background: var(--teal);
+  background: var(--bg-black);
 }
-.race-blue .race-letter { color: rgba(255,255,255,0.3); }
-.race-blue h3 { color: #fff; }
-.race-blue .race-subtitle { color: rgba(255,255,255,0.6); }
-.race-blue > p { color: rgba(255,255,255,0.75); }
+.race-blue .race-letter { color: rgba(255,255,255,0.2); }
+.race-blue h3 { color: var(--text-on-dark); }
+.race-blue .race-subtitle { color: var(--accent); }
+.race-blue > p { color: var(--text-on-dark-sub); }
 .race-blue .race-tools span {
-  background: rgba(255,255,255,0.15);
+  background: rgba(196,122,42,0.15);
   color: rgba(255,255,255,0.9);
 }
 .race-blue .race-shift {
   color: rgba(255,255,255,0.85);
-  border-top: 1px solid rgba(255,255,255,0.15);
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 /* A — Copper Gold */
