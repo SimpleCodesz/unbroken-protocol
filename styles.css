@@ -543,30 +543,25 @@ img { max-width: 100%; display: block; }
 }
 
 .problems-grid {
-  margin-top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
 }
 
 .problem-card {
-  min-width: 340px;
-  max-width: 340px;
-  padding: var(--space-xl);
-  background: var(--bg-white);
-  border: none;
+  padding: 40px;
   border-radius: var(--radius);
-  transition: all 0.3s;
-  scroll-snap-align: start;
-  flex-shrink: 0;
+  transition: box-shadow 0.3s;
 }
 
 .problem-card:hover {
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .problem-icon {
   width: 52px;
   height: 52px;
-  background: var(--accent-light);
-  color: var(--accent);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -576,18 +571,52 @@ img { max-width: 100%; display: block; }
 
 .problem-card h3 {
   font-family: var(--font-display);
-  font-size: 21px;
+  font-size: 28px;
   font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--space-xs);
+  margin-bottom: 8px;
   letter-spacing: -0.02em;
 }
 
 .problem-card p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.43;
+  font-size: 15px;
+  line-height: 1.5;
 }
+
+/* Problem card dark — space black */
+.problem-dark { background: var(--bg-dark); }
+.problem-dark .problem-icon { background: rgba(255,255,255,0.1); color: var(--accent); }
+.problem-dark h3 { color: var(--text-on-dark); }
+.problem-dark p { color: var(--text-on-dark-sub); }
+
+/* Problem card copper */
+.problem-copper { background: var(--accent); }
+.problem-copper .problem-icon { background: rgba(255,255,255,0.2); color: #fff; }
+.problem-copper h3 { color: #fff; }
+.problem-copper p { color: rgba(255,255,255,0.75); }
+
+/* Problem card grey — warm light */
+.problem-grey { background: var(--bg-grey); }
+.problem-grey .problem-icon { background: var(--accent-light); color: var(--accent); }
+.problem-grey h3 { color: var(--text-primary); }
+.problem-grey p { color: var(--text-secondary); }
+
+/* Problem card charcoal */
+.problem-charcoal { background: #2C2C2E; }
+.problem-charcoal .problem-icon { background: rgba(196,122,42,0.2); color: var(--accent); }
+.problem-charcoal h3 { color: var(--text-on-dark); }
+.problem-charcoal p { color: var(--text-on-dark-sub); }
+
+/* Problem card warm — ivory */
+.problem-warm { background: var(--bg-ivory); }
+.problem-warm .problem-icon { background: var(--accent-light); color: var(--accent); }
+.problem-warm h3 { color: var(--text-primary); }
+.problem-warm p { color: var(--text-secondary); }
+
+/* Problem card black */
+.problem-black { background: var(--bg-black); }
+.problem-black .problem-icon { background: rgba(196,122,42,0.15); color: var(--accent); }
+.problem-black h3 { color: var(--text-on-dark); }
+.problem-black p { color: var(--text-on-dark-sub); }
 
 /* ===== PHILOSOPHY QUOTE ===== */
 .quote-section {
@@ -1339,7 +1368,8 @@ img { max-width: 100%; display: block; }
   .partner-name { font-size: 16px; }
 
   .race-grid { grid-template-columns: 1fr; }
-  .problem-card, .coaching-card { min-width: 280px; max-width: 280px; }
+  .problems-grid { grid-template-columns: 1fr; }
+  .coaching-card { min-width: 280px; max-width: 280px; }
   .apply-card { padding: 40px 24px; }
   .apply-steps { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
