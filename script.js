@@ -120,17 +120,73 @@ document.querySelectorAll('.carousel-wrap').forEach(wrap => {
   setTimeout(updateArrows, 100);
 });
 
-// ===== APPLE-STYLE SCROLL REVEAL =====
+// ===== APPLE-STYLE SCROLL REVEAL (STAGGERED) =====
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
+      // For cards inside carousels, stagger by sibling index
+      const parent = entry.target.parentElement;
+      const isCard = entry.target.classList.contains('problem-card') ||
+                     entry.target.classList.contains('race-card') ||
+                     entry.target.classList.contains('coaching-card');
+
+      if (isCard && parent) {
+        const siblings = Array.from(parent.children).filter(c =>
+          c.classList.contains('scroll-reveal'));
+        const idx = siblings.indexOf(entry.target);
+        const delay = idx * 80; // 80ms stagger per card
+        entry.target.style.transitionDelay = delay + 'ms';
+      }
+
       entry.target.classList.add('revealed');
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('section:not(.hero):not(.stats-bar), .philosophy-quote, .problem-card, .race-card, .coaching-card, .pricing-card-v2, .faq-group, .about-grid, .apply-card').forEach(el => {
+const revealElements = document.querySelectorAll('section:not(.hero):not(.stats-bar), .philosophy-quote, .problem-card, .race-card, .coaching-card, .pricing-card-v2, .faq-group, .about-grid, .apply-card');
+revealElements.forEach(el => {
   el.classList.add('scroll-reveal');
   revealObserver.observe(el);
+});
+
+// Reveal elements already above viewport (handles anchor link jumps)
+const revealAbove = () => {
+  revealElements.forEach(el => {
+    if (el.classList.contains('revealed')) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.bottom < 0) {
+      el.style.transition = 'none';
+      el.classList.add('revealed');
+      revealObserver.unobserve(el);
+    }
+  });
+};
+window.addEventListener('scroll', revealAbove, { passive: true });
+// Run once on load for pages loaded at scroll position
+revealAbove();
+
+// ===== HERO LOAD ORCHESTRATION =====
+window.addEventListener('DOMContentLoaded', () => {
+  const hero = document.querySelector('.hero-content');
+  if (!hero) return;
+
+  const h1 = hero.querySelector('h1');
+  const sub = hero.querySelector('.hero-sub');
+  const ctas = hero.querySelector('.hero-ctas');
+
+  // Remove the blanket animation and stagger individually
+  hero.style.animation = 'none';
+  hero.style.opacity = '1';
+
+  [h1, sub, ctas].forEach((el, i) => {
+    if (!el) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 300 + (i * 200)); // 300ms initial delay, 200ms between elements
+  });
 });
