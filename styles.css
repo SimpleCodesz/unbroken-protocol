@@ -1067,8 +1067,13 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius);
   padding: 40px;
   position: relative;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
+}
+.pricing-card-v2 .btn-primary {
+  margin-top: auto;
 }
 
 .pricing-card-v2:hover {
