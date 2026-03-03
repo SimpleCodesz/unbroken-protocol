@@ -547,9 +547,8 @@ img { max-width: 100%; display: block; }
 }
 
 .problem-card {
-  min-width: 380px;
-  max-width: 380px;
-  min-height: 280px;
+  min-width: 420px;
+  max-width: 420px;
   padding: 40px;
   border-radius: var(--radius);
   transition: box-shadow 0.3s;
@@ -1373,7 +1372,7 @@ img { max-width: 100%; display: block; }
   .partner-name { font-size: 16px; }
 
   .race-card { min-width: 320px; max-width: 320px; padding: 32px; }
-  .problem-card { min-width: 300px; max-width: 300px; min-height: auto; }
+  .problem-card { min-width: 320px; max-width: 320px; padding: 32px; }
   .coaching-card { min-width: 280px; max-width: 280px; }
   .apply-card { padding: 40px 24px; }
   .apply-steps { grid-template-columns: 1fr; }
