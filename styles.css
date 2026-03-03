@@ -939,6 +939,55 @@ img { max-width: 100%; display: block; }
   line-height: 1.47;
 }
 
+/* ===== E-E-A-T CREDENTIALS ===== */
+.credentials-section {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.credentials-heading {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.credential-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.credential-icon {
+  flex-shrink: 0;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+}
+
+.credential-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .credentials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== IS THIS FOR YOU ===== */
 .for-you {
   padding: var(--space-4xl) 0;
