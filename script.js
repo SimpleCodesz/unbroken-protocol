@@ -295,3 +295,84 @@ if (leadForm) {
     });
   });
 }
+
+// ===== EMAIL SIGNUP POPUP (20s delay) =====
+(function() {
+  var popup = document.getElementById('emailPopup');
+  var closeBtn = document.getElementById('popupClose');
+  var popupForm = document.getElementById('newsletterPopupForm');
+  var popupSuccess = document.getElementById('popupSuccess');
+  if (!popup) return;
+
+  // Don't show if already dismissed within 7 days
+  var dismissed = localStorage.getItem('popup_dismissed');
+  if (dismissed && (Date.now() - parseInt(dismissed, 10)) < 7 * 24 * 60 * 60 * 1000) return;
+
+  // Don't show if already subscribed
+  if (localStorage.getItem('popup_subscribed')) return;
+
+  // Show after 20 seconds
+  setTimeout(function() {
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }, 20000);
+
+  function closePopup() {
+    popup.classList.remove('active');
+    document.body.style.overflow = '';
+    localStorage.setItem('popup_dismissed', Date.now().toString());
+  }
+
+  // Close on X button
+  closeBtn.addEventListener('click', closePopup);
+
+  // Close on overlay click (not card)
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) closePopup();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && popup.classList.contains('active')) closePopup();
+  });
+
+  // AJAX form submission
+  if (popupForm) {
+    popupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var formData = new FormData(this);
+      var submitBtn = this.querySelector('.popup-submit-btn');
+      if (submitBtn) {
+        submitBtn.textContent = 'Subscribing…';
+        submitBtn.disabled = true;
+      }
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(function(response) {
+        if (response.ok) {
+          popupForm.style.display = 'none';
+          popupSuccess.style.display = 'block';
+          localStorage.setItem('popup_subscribed', '1');
+          setTimeout(closePopup, 3000);
+        } else {
+          if (submitBtn) {
+            submitBtn.innerHTML = 'Subscribe <span class="btn-arrow">&rsaquo;</span>';
+            submitBtn.disabled = false;
+          }
+          alert('There was an issue. Please try again.');
+        }
+      })
+      .catch(function() {
+        if (submitBtn) {
+          submitBtn.innerHTML = 'Subscribe <span class="btn-arrow">&rsaquo;</span>';
+          submitBtn.disabled = false;
+        }
+        alert('There was an issue. Please try again.');
+      });
+    });
+  }
+})();

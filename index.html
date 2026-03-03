@@ -1029,6 +1029,30 @@
     </div>
   </footer>
 
+  <!-- ===== EMAIL SIGNUP POPUP ===== -->
+  <div class="popup-overlay" id="emailPopup">
+    <div class="popup-card">
+      <button class="popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+      <div class="popup-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C47A2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <h3 class="popup-title">Stay in the loop</h3>
+      <p class="popup-desc">Get performance insights, recovery strategies &amp; exclusive content from Abraham &mdash; straight to your inbox.</p>
+      <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field-nl" class="popup-form" id="newsletterPopupForm">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p style="display:none;"><input name="bot-field-nl"></p>
+        <div class="popup-input-row">
+          <input type="email" name="email" required placeholder="Enter your email" aria-label="Email address for newsletter" class="popup-email-input">
+          <button type="submit" class="popup-submit-btn">Subscribe <span class="btn-arrow">&rsaquo;</span></button>
+        </div>
+      </form>
+      <div class="popup-success" id="popupSuccess" style="display:none;">
+        <p>You&rsquo;re in! Watch your inbox for the latest insights.</p>
+      </div>
+      <p class="popup-privacy">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
