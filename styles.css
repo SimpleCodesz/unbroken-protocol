@@ -701,9 +701,9 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid rgba(255,255,255,0.15);
 }
 
-/* A — Sage Teal */
+/* A — Copper Gold */
 .race-green {
-  background: var(--teal-light);
+  background: var(--accent);
 }
 .race-green .race-letter { color: rgba(255,255,255,0.3); }
 .race-green h3 { color: #fff; }
