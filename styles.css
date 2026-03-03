@@ -551,15 +551,17 @@ img { max-width: 100%; display: block; }
   max-width: 420px;
   padding: 40px;
   border-radius: var(--radius);
-  transition: box-shadow 0.3s;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   scroll-snap-align: start;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  will-change: transform;
 }
 
 .problem-card:hover {
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0px 14px 36px rgba(0, 0, 0, 0.14);
 }
 
 .problem-icon {
@@ -658,13 +660,15 @@ img { max-width: 100%; display: block; }
   max-width: 420px;
   border-radius: var(--radius);
   padding: 40px;
-  transition: box-shadow 0.3s;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   scroll-snap-align: start;
   flex-shrink: 0;
+  will-change: transform;
 }
 
 .race-card:hover {
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0px 14px 36px rgba(0, 0, 0, 0.14);
 }
 
 .race-letter {
@@ -800,15 +804,17 @@ img { max-width: 100%; display: block; }
   max-width: 420px;
   padding: 40px;
   border-radius: var(--radius);
-  transition: box-shadow 0.3s;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   scroll-snap-align: start;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  will-change: transform;
 }
 
 .coaching-card:hover {
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0px 14px 36px rgba(0, 0, 0, 0.14);
 }
 
 .coaching-num {
@@ -1016,11 +1022,13 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius);
   padding: 40px;
   position: relative;
-  transition: box-shadow 0.3s;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
 }
 
 .pricing-card-v2:hover {
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0px 14px 36px rgba(0, 0, 0, 0.10);
 }
 
 .pricing-card-v2.premium {
