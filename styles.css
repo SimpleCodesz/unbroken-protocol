@@ -1056,8 +1056,8 @@ img { max-width: 100%; display: block; }
 
 .pricing-cards-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   margin-top: 48px;
 }
 
@@ -1079,6 +1079,27 @@ img { max-width: 100%; display: block; }
 .pricing-card-v2.premium {
   background: var(--bg-dark);
   border: none;
+}
+
+.pricing-card-v2.elite {
+  background: linear-gradient(145deg, #1D1D1F 0%, #0A0A0A 50%, #000000 100%);
+  border: 1px solid rgba(196, 122, 42, 0.3);
+}
+
+.pricing-card-v2.elite h3 { color: var(--text-on-dark); }
+.pricing-card-v2.elite .pricing-tier-desc { color: var(--text-on-dark-sub); }
+.pricing-card-v2.elite .price-currency { color: var(--accent); }
+.pricing-card-v2.elite .price-value { color: var(--text-on-dark); }
+.pricing-card-v2.elite .price-period { color: var(--text-on-dark-sub); }
+.pricing-card-v2.elite .pricing-list li { color: var(--text-on-dark-sub); }
+.pricing-card-v2.elite .pricing-list li::before { color: var(--accent); }
+
+.pricing-commitment {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-top: -16px;
+  margin-bottom: 24px;
+  font-weight: 500;
 }
 
 .premium-badge {
