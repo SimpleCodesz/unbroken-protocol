@@ -19,7 +19,7 @@
   --bg-dark: #111111;
   --border: #e5e5e5;
   --border-dark: #2a2a2a;
-  --nav-bg: #1a1a1a;
+  --nav-bg: rgba(26, 26, 26, 0.9);
   --radius: 12px;
   --radius-sm: 8px;
   --radius-pill: 100px;
@@ -1098,4 +1098,17 @@ img { max-width: 100%; display: block; }
   .hero h1 { font-size: 28px; }
   .hero-ctas { flex-direction: column; }
   .section-title-lg { font-size: 26px; }
+}
+
+/* ===== APPLE-STYLE SCROLL REVEAL ===== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
