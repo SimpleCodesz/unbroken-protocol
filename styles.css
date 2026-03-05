@@ -2602,34 +2602,96 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===== RONALDO VIDEO EMBED ===== */
-.video-embed-wrap {
-  position: relative;
-  display: inline-flex;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
+/* ===== VIDEO CTA BAR (inside testimonial card) ===== */
+.video-cta-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 18px;
   margin-bottom: 20px;
-  cursor: pointer;
-  max-width: 100%;
-}
-.video-embed-wrap video {
-  display: block;
-  width: 280px;
-  max-width: 100%;
+  border: none;
   border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.3s;
 }
-.video-play-overlay {
-  position: absolute;
-  inset: 0;
+.video-cta-bar:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+.video-cta-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.35);
-  transition: background 0.3s;
-  border-radius: var(--radius-sm);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
 }
-.video-play-overlay:hover { background: rgba(0,0,0,0.2); }
-.video-play-overlay svg { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
-.video-embed-wrap.playing .video-play-overlay { opacity: 0; pointer-events: none; }
+.video-cta-text { flex: 1; text-align: left; }
+.video-cta-arrow { font-size: 22px; line-height: 1; opacity: 0.7; }
+
+/* ===== VIDEO MODAL OVERLAY ===== */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s, visibility 0.35s;
+}
+.video-modal.active { opacity: 1; visibility: visible; }
+.video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  cursor: pointer;
+}
+.video-modal-content {
+  position: relative;
+  width: 90vw;
+  max-width: 720px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transform: scale(0.92);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.video-modal.active .video-modal-content { transform: scale(1); }
+.video-modal-content video {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+}
+.video-modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+.video-modal-close-btn:hover { background: rgba(0,0,0,0.8); }
 
 /* partner-name links inherit typography, just remove underline */
 a.partner-name {

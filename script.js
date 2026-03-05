@@ -585,28 +585,39 @@ if (leadForm) {
   diagramObserver.observe(diagram);
 })();
 
-// ===== RONALDO VIDEO PLAYER =====
+// ===== RONALDO VIDEO MODAL =====
 (function() {
-  var wrap = document.getElementById('ronaldoVideoWrap');
-  var video = document.getElementById('ronaldoVideo');
   var playBtn = document.getElementById('ronaldoPlayBtn');
-  if (!wrap || !video || !playBtn) return;
+  var modal = document.getElementById('ronaldoVideoModal');
+  var video = document.getElementById('ronaldoVideo');
+  var backdrop = document.getElementById('ronaldoModalClose');
+  if (!playBtn || !modal || !video) return;
 
-  playBtn.addEventListener('click', function() {
-    if (video.paused) {
-      video.play();
-      wrap.classList.add('playing');
-      video.setAttribute('controls', 'true');
-    }
+  var closeBtn = modal.querySelector('.video-modal-close-btn');
+
+  function openModal() {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    video.play();
+  }
+
+  function closeModal() {
+    video.pause();
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  playBtn.addEventListener('click', openModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
   });
 
-  video.addEventListener('pause', function() {
-    wrap.classList.remove('playing');
-  });
-  video.addEventListener('ended', function() {
-    wrap.classList.remove('playing');
-    video.removeAttribute('controls');
-  });
+  video.addEventListener('ended', closeModal);
 
   // GA4 tracking
   if (typeof gtag === 'function') {

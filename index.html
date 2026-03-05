@@ -684,12 +684,22 @@
               <span class="testimonial-result-label">Result:</span>
               <span>Local competitor to 3rd in the world &mdash; back-to-back IBJJF championships</span>
             </div>
-            <div class="video-embed-wrap" id="ronaldoVideoWrap">
-              <video preload="metadata" playsinline id="ronaldoVideo">
-                <source src="/assets/ronaldo-testimonial.mp4" type="video/mp4">
-              </video>
-              <div class="video-play-overlay" id="ronaldoPlayBtn" aria-label="Play testimonial video">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" fill="rgba(196,122,42,0.9)" stroke="white" stroke-width="2"/><path d="M19 15v18l16-9z" fill="white"/></svg>
+            <button class="video-cta-bar" id="ronaldoPlayBtn" aria-label="Watch Ronaldo's video testimonial">
+              <span class="video-cta-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              <span class="video-cta-text">Watch video testimonial</span>
+              <span class="video-cta-arrow">&rsaquo;</span>
+            </button>
+
+            <!-- Video modal overlay -->
+            <div class="video-modal" id="ronaldoVideoModal" aria-hidden="true">
+              <div class="video-modal-backdrop" id="ronaldoModalClose"></div>
+              <div class="video-modal-content">
+                <button class="video-modal-close-btn" aria-label="Close video">&times;</button>
+                <video controls playsinline id="ronaldoVideo">
+                  <source src="/assets/ronaldo-testimonial.mp4" type="video/mp4">
+                </video>
               </div>
             </div>
             <div class="testimonial-attribution">
