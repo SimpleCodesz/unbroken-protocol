@@ -585,52 +585,6 @@ if (leadForm) {
   diagramObserver.observe(diagram);
 })();
 
-// ===== RONALDO VIDEO MODAL =====
-(function() {
-  var playBtn = document.getElementById('ronaldoPlayBtn');
-  var modal = document.getElementById('ronaldoVideoModal');
-  var video = document.getElementById('ronaldoVideo');
-  var backdrop = document.getElementById('ronaldoModalClose');
-  if (!playBtn || !modal || !video) return;
-
-  var closeBtn = modal.querySelector('.video-modal-close-btn');
-
-  function openModal() {
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    video.play();
-  }
-
-  function closeModal() {
-    video.pause();
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  playBtn.addEventListener('click', openModal);
-  if (backdrop) backdrop.addEventListener('click', closeModal);
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-  });
-
-  video.addEventListener('ended', closeModal);
-
-  // GA4 tracking
-  if (typeof gtag === 'function') {
-    var tracked = false;
-    video.addEventListener('play', function() {
-      if (!tracked) {
-        gtag('event', 'video_watch', { video: 'ronaldo_testimonial' });
-        tracked = true;
-      }
-    });
-  }
-})();
-
 // ===== GA4 CONVERSION EVENTS =====
 (function() {
   if (typeof gtag !== 'function') return;
