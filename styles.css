@@ -435,12 +435,10 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===== PARTNERS ===== */
-/* ===== PARTNERS LOGO TICKER ===== */
 .partners {
   padding: 48px 0;
   background: var(--bg-grey);
   border-top: 1px solid var(--border);
-  overflow: hidden;
 }
 
 .partners-heading {
@@ -454,46 +452,6 @@ img { max-width: 100%; display: block; }
   margin-bottom: 24px;
 }
 
-.partners-ticker {
-  display: flex;
-  width: max-content;
-  animation: partnerScroll 25s linear infinite;
-}
-.partners-ticker:hover { animation-play-state: paused; }
-
-.partners-ticker-set {
-  display: flex;
-  align-items: center;
-  gap: 64px;
-  padding: 0 32px;
-}
-
-.partner-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  opacity: 0.5;
-  filter: grayscale(1);
-  transition: opacity 0.3s, filter 0.3s;
-}
-.partner-logo:hover {
-  opacity: 1;
-  filter: grayscale(0);
-}
-.partner-logo svg { flex-shrink: 0; }
-
-@keyframes partnerScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* Legacy fallback */
 .partners-row {
   display: flex;
   align-items: center;
