@@ -290,65 +290,143 @@
     }
     .episode-row audio { display: none; }
 
-    /* ===== NOW PLAYING BAR ===== */
-    .now-playing-bar {
+    /* ===== FULL-SCREEN NOW PLAYING ===== */
+    .now-playing-view {
       position: fixed;
-      bottom: 0;
+      top: 0;
       left: 0;
       right: 0;
-      background: rgba(28, 28, 30, 0.92);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      z-index: 100;
-      border-top: 0.5px solid #333;
-      transform: translateY(100%);
-      transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+      bottom: 0;
+      z-index: 200;
+      background: #1c1c1e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s, visibility 0.35s;
     }
-    .now-playing-bar.visible { transform: translateY(0); }
-    .np-progress {
-      height: 3px;
-      background: #222;
-      width: 100%;
+    .now-playing-view.visible { opacity: 1; visibility: visible; }
+
+    .np-close-btn {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      background: none;
+      border: none;
+      color: #86868B;
       cursor: pointer;
+      font-size: 28px;
+      padding: 8px;
+      line-height: 1;
+      transition: color 0.2s;
     }
-    .np-progress-fill {
+    .np-close-btn:hover { color: #F5F5F7; }
+
+    .np-artwork {
+      width: min(50vw, 300px);
+      height: min(50vw, 300px);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+    .np-artwork img {
+      width: 100%;
       height: 100%;
-      background: #C47A2A;
-      width: 0%;
-      transition: width 0.25s linear;
+      object-fit: cover;
+      object-position: center 15%;
     }
-    .np-inner {
+
+    .np-episode-info {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 10px 24px 14px;
-      max-width: 680px;
-      margin: 0 auto;
-      gap: 16px;
+      gap: 12px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
     }
-    .np-info { flex: 1; min-width: 0; }
-    .np-title {
-      font-size: 14px;
+    .np-episode-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .np-episode-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+    }
+    .np-episode-meta { flex: 1; min-width: 0; }
+    .np-episode-date {
+      font-size: 12px;
+      color: #86868B;
+      margin-bottom: 2px;
+    }
+    .np-episode-title {
+      font-size: 15px;
       font-weight: 600;
       color: #F5F5F7;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      line-height: 1.3;
     }
-    .np-author {
-      font-size: 12px;
+    .np-episode-author {
+      font-size: 13px;
       color: #86868B;
     }
+
+    .np-progress-wrap {
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 8px;
+    }
+    .np-progress {
+      height: 4px;
+      background: #3a3a3c;
+      width: 100%;
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+    .np-progress-fill {
+      height: 100%;
+      background: #86868B;
+      width: 0%;
+      border-radius: 2px;
+      transition: width 0.25s linear;
+    }
+    .np-timestamps {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 24px;
+    }
+    .np-time {
+      font-size: 12px;
+      color: #86868B;
+      font-variant-numeric: tabular-nums;
+    }
+
     .np-controls {
       display: flex;
       align-items: center;
-      gap: 20px;
-      flex-shrink: 0;
+      justify-content: center;
+      gap: 32px;
+      width: 100%;
+      max-width: 400px;
     }
     .np-btn {
       background: none;
       border: none;
-      color: #F5F5F7;
+      color: #86868B;
       cursor: pointer;
       padding: 4px;
       display: flex;
@@ -357,27 +435,37 @@
       transition: color 0.15s;
       position: relative;
     }
-    .np-btn:hover { color: #C47A2A; }
+    .np-btn:hover { color: #F5F5F7; }
     .np-btn .label-sm {
       position: absolute;
-      font-size: 8px;
+      font-size: 9px;
       font-weight: 700;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       margin-top: 1px;
+      color: inherit;
+    }
+    .np-speed-btn {
+      font-size: 15px;
+      font-weight: 700;
+      color: #86868B;
+      min-width: 32px;
     }
     .np-play-btn {
-      width: 40px;
-      height: 40px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: #F5F5F7;
-      color: #000 !important;
+      background: none;
+      border: none;
+      color: #F5F5F7;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      transition: color 0.15s;
     }
-    .np-play-btn:hover { background: #C47A2A; color: #fff !important; }
+    .np-play-btn:hover { color: #C47A2A; }
     .np-play-btn .pause-icon { display: none; }
     .np-play-btn.is-playing .play-icon { display: none; }
     .np-play-btn.is-playing .pause-icon { display: block; }
@@ -423,9 +511,6 @@
       font-size: 14px;
     }
     .footer-mini a { color: #C47A2A; text-decoration: none; }
-    body.has-player .footer-mini { padding-bottom: 90px; }
-    body.has-player .podcast-cta { padding-bottom: 80px; }
-
     /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
       .podcast-hero { padding: 36px 20px 28px; }
@@ -439,12 +524,13 @@
       .episode-row-title { font-size: 16px; }
       .episode-row-desc { font-size: 13px; }
       .nav-cta { display: none; }
-      .np-inner { padding: 8px 16px 12px; gap: 12px; }
-      .np-controls { gap: 16px; }
+      .now-playing-view { padding: 32px 20px; }
+      .np-artwork { width: min(80vw, 300px); height: min(80vw, 300px); margin-bottom: 24px; }
+      .np-controls { gap: 24px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .now-playing-bar, .play-latest-btn, .duration-pill, .episode-row { transition: none; }
+      .now-playing-view, .play-latest-btn, .duration-pill, .episode-row { transition: none; }
     }
   </style>
 </head>
@@ -737,34 +823,56 @@
     </div>
   </section>
 
-  <!-- ===== NOW PLAYING BAR ===== -->
-  <div class="now-playing-bar" id="nowPlayingBar">
-    <div class="np-progress" id="npProgressBar">
-      <div class="np-progress-fill" id="npProgressFill"></div>
+  <!-- ===== FULL-SCREEN NOW PLAYING ===== -->
+  <div class="now-playing-view" id="nowPlayingView">
+    <button class="np-close-btn" id="npCloseBtn" aria-label="Close player">&#x2304;</button>
+
+    <div class="np-artwork">
+      <img src="/assets/abraham.jpg" alt="The Unbroken Protocol" width="360" height="360">
     </div>
-    <div class="np-inner">
-      <div class="np-info">
-        <p class="np-title" id="npTitle">&mdash;</p>
-        <p class="np-author">The Unbroken Protocol</p>
+
+    <div class="np-episode-info">
+      <div class="np-episode-thumb">
+        <img src="/assets/abraham.jpg" alt="" width="48" height="48">
       </div>
-      <div class="np-controls">
-        <button class="np-btn" id="npRewind" aria-label="Rewind 15 seconds">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
-          </svg>
-          <span class="label-sm">15</span>
-        </button>
-        <button class="np-btn np-play-btn" id="npPlayPause" aria-label="Play or pause">
-          <svg class="play-icon" width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2v12l10-6z"/></svg>
-          <svg class="pause-icon" width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
-        </button>
-        <button class="np-btn" id="npForward" aria-label="Forward 30 seconds">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/>
-          </svg>
-          <span class="label-sm">30</span>
-        </button>
+      <div class="np-episode-meta">
+        <p class="np-episode-date" id="npDate">&mdash;</p>
+        <p class="np-episode-title" id="npTitle">&mdash;</p>
+        <p class="np-episode-author">The Unbroken Protocol</p>
       </div>
+    </div>
+
+    <div class="np-progress-wrap">
+      <div class="np-progress" id="npProgressBar">
+        <div class="np-progress-fill" id="npProgressFill"></div>
+      </div>
+    </div>
+    <div class="np-timestamps">
+      <span class="np-time" id="npTimeCurrent">0:00</span>
+      <span class="np-time" id="npTimeRemaining">-0:00</span>
+    </div>
+
+    <div class="np-controls">
+      <button class="np-btn np-speed-btn" id="npSpeed" aria-label="Playback speed">1x</button>
+      <button class="np-btn" id="npRewind" aria-label="Rewind 15 seconds">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+        </svg>
+        <span class="label-sm">15</span>
+      </button>
+      <button class="np-btn np-play-btn" id="npPlayPause" aria-label="Play or pause">
+        <svg class="play-icon" width="36" height="36" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2v12l10-6z"/></svg>
+        <svg class="pause-icon" width="36" height="36" viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="1" width="4.5" height="14" rx="1.2"/><rect x="9.5" y="1" width="4.5" height="14" rx="1.2"/></svg>
+      </button>
+      <button class="np-btn" id="npForward" aria-label="Forward 30 seconds">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/>
+        </svg>
+        <span class="label-sm">30</span>
+      </button>
+      <button class="np-btn" id="npSleep" aria-label="Sleep timer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
     </div>
   </div>
 
@@ -781,11 +889,16 @@
 
   <script>
   (function() {
-    var bar = document.getElementById('nowPlayingBar');
+    var view = document.getElementById('nowPlayingView');
     var npTitle = document.getElementById('npTitle');
+    var npDate = document.getElementById('npDate');
     var npPlayPause = document.getElementById('npPlayPause');
     var progressFill = document.getElementById('npProgressFill');
     var progressBar = document.getElementById('npProgressBar');
+    var timeCurrent = document.getElementById('npTimeCurrent');
+    var timeRemaining = document.getElementById('npTimeRemaining');
+    var npCloseBtn = document.getElementById('npCloseBtn');
+    var npSpeedBtn = document.getElementById('npSpeed');
     var playLatestBtn = document.getElementById('playLatestBtn');
     var moreToggle = document.getElementById('moreToggle');
     var latestDesc = document.getElementById('latestDesc');
@@ -793,12 +906,21 @@
     var currentAudio = null;
     var currentRow = null;
     var raf = null;
+    var speeds = [1, 1.25, 1.5, 2, 0.75];
+    var speedIdx = 0;
+
+    function fmt(s) {
+      if (isNaN(s) || !isFinite(s)) return '0:00';
+      var m = Math.floor(s / 60);
+      var sec = Math.floor(s % 60);
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
 
     function playEpisode(row) {
       var audio = row.querySelector('audio');
       var title = row.querySelector('.episode-row-title').textContent;
+      var date = row.querySelector('.episode-row-date').textContent;
 
-      // Stop current
       if (currentAudio && currentAudio !== audio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
@@ -809,38 +931,53 @@
       currentRow = row;
       row.classList.add('is-playing');
       npTitle.textContent = title;
-      bar.classList.add('visible');
-      document.body.classList.add('has-player');
+      npDate.textContent = date;
+      view.classList.add('visible');
+      document.body.style.overflow = 'hidden';
 
       audio.play().then(function() {
         updatePlayBtn(true);
         startProgress();
       }).catch(function() {});
 
-      // GA4 event
       if (typeof gtag === 'function') {
         gtag('event', 'podcast_play', { episode_title: title, episode_number: row.dataset.ep });
       }
     }
 
     function updatePlayBtn(playing) {
-      if (playing) {
-        npPlayPause.classList.add('is-playing');
-      } else {
-        npPlayPause.classList.remove('is-playing');
-      }
+      if (playing) npPlayPause.classList.add('is-playing');
+      else npPlayPause.classList.remove('is-playing');
     }
 
     function startProgress() {
       if (raf) cancelAnimationFrame(raf);
       (function tick() {
         if (currentAudio && !currentAudio.paused) {
-          var pct = (currentAudio.currentTime / currentAudio.duration) * 100;
-          progressFill.style.width = (isNaN(pct) ? 0 : pct) + '%';
+          var dur = currentAudio.duration || 0;
+          var cur = currentAudio.currentTime || 0;
+          var pct = dur ? (cur / dur) * 100 : 0;
+          progressFill.style.width = pct + '%';
+          timeCurrent.textContent = fmt(cur);
+          timeRemaining.textContent = '-' + fmt(dur - cur);
           raf = requestAnimationFrame(tick);
         }
       })();
     }
+
+    // Close player
+    npCloseBtn.addEventListener('click', function() {
+      view.classList.remove('visible');
+      document.body.style.overflow = '';
+    });
+
+    // Speed control
+    npSpeedBtn.addEventListener('click', function() {
+      speedIdx = (speedIdx + 1) % speeds.length;
+      var s = speeds[speedIdx];
+      npSpeedBtn.textContent = s + 'x';
+      if (currentAudio) currentAudio.playbackRate = s;
+    });
 
     // Bind episode rows
     rows.forEach(function(row) {
@@ -860,7 +997,7 @@
       if (first) playEpisode(first);
     });
 
-    // Now Playing controls
+    // Play/Pause
     npPlayPause.addEventListener('click', function() {
       if (!currentAudio) return;
       if (currentAudio.paused) {
@@ -875,18 +1012,14 @@
     });
 
     document.getElementById('npRewind').addEventListener('click', function() {
-      if (currentAudio) {
-        currentAudio.currentTime = Math.max(0, currentAudio.currentTime - 15);
-      }
+      if (currentAudio) currentAudio.currentTime = Math.max(0, currentAudio.currentTime - 15);
     });
 
     document.getElementById('npForward').addEventListener('click', function() {
-      if (currentAudio) {
-        currentAudio.currentTime = Math.min(currentAudio.duration || 0, currentAudio.currentTime + 30);
-      }
+      if (currentAudio) currentAudio.currentTime = Math.min(currentAudio.duration || 0, currentAudio.currentTime + 30);
     });
 
-    // Progress bar seek
+    // Seek
     progressBar.addEventListener('click', function(e) {
       if (!currentAudio || !currentAudio.duration) return;
       var rect = progressBar.getBoundingClientRect();
@@ -895,12 +1028,13 @@
       progressFill.style.width = (pct * 100) + '%';
     });
 
-    // Audio ended
+    // Ended
     document.addEventListener('ended', function(e) {
       if (e.target === currentAudio) {
         updatePlayBtn(false);
         progressFill.style.width = '100%';
-        // Auto-advance to next episode
+        timeCurrent.textContent = fmt(currentAudio.duration);
+        timeRemaining.textContent = '-0:00';
         if (currentRow && currentRow.nextElementSibling && currentRow.nextElementSibling.classList.contains('episode-row')) {
           setTimeout(function() { playEpisode(currentRow.nextElementSibling); }, 1000);
         }
