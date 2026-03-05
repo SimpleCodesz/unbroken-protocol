@@ -175,6 +175,77 @@ window.addEventListener('scroll', revealAbove, { passive: true });
 // Run once on load for pages loaded at scroll position
 revealAbove();
 
+// ===== STAGGERED CHILD REVEAL =====
+const staggerConfig = {
+  '.for-you':       { children: '.section-tag, .section-title-lg, .for-you-col', stagger: 150 },
+  '.pricing':       { children: '.section-tag, .section-title-lg, .section-desc, .pricing-card-v2', stagger: 100 },
+  '.about':         { children: '.section-tag, .section-title-lg, .about-detail', stagger: 80 },
+  '.faq':           { children: '.section-title-lg, .faq-group', stagger: 120 },
+  '.method':        { children: '.section-tag, .section-title-lg, .section-desc', stagger: 80 },
+  '.coaching':      { children: '.section-tag, .section-title-lg', stagger: 80 },
+  '.testimonials':  { children: '.section-tag, .section-title-lg, .section-desc', stagger: 80 },
+  '.problems':      { children: '.section-tag, .section-title-lg, .section-desc', stagger: 80 },
+  '.blog-section':  { children: '.section-tag, .section-title-lg, .blog-subtitle', stagger: 80 },
+};
+
+const staggerObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const section = entry.target;
+
+    for (const [selector, { children: childSel, stagger }] of Object.entries(staggerConfig)) {
+      if (!section.matches(selector)) continue;
+      const kids = section.querySelectorAll(childSel);
+      kids.forEach((child, i) => {
+        child.style.transitionDelay = (i * stagger) + 'ms';
+        requestAnimationFrame(() => child.classList.add('revealed'));
+      });
+      break;
+    }
+    staggerObserver.unobserve(section);
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+// Nested stagger for For-You list items (slide from left)
+const nestedStaggerObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const items = entry.target.querySelectorAll('h3, li');
+    items.forEach((item, i) => {
+      item.style.transitionDelay = (i * 60) + 'ms';
+      requestAnimationFrame(() => item.classList.add('revealed'));
+    });
+    nestedStaggerObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+// Initialize stagger targets
+Object.entries(staggerConfig).forEach(([parentSel, { children: childSel }]) => {
+  const parent = document.querySelector(parentSel);
+  if (!parent) return;
+  parent.querySelectorAll(childSel).forEach(child => child.classList.add('stagger-reveal'));
+  staggerObserver.observe(parent);
+});
+
+// Initialize nested For-You column stagger
+document.querySelectorAll('.for-you-col').forEach(col => {
+  col.querySelectorAll('h3, li').forEach(el => el.classList.add('stagger-reveal'));
+  nestedStaggerObserver.observe(col);
+});
+
+// Reveal stagger elements already above viewport
+const revealStaggerAbove = () => {
+  document.querySelectorAll('.stagger-reveal:not(.revealed)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.bottom < 0) {
+      el.style.transition = 'none';
+      el.classList.add('revealed');
+    }
+  });
+};
+window.addEventListener('scroll', revealStaggerAbove, { passive: true });
+revealStaggerAbove();
+
 // ===== HERO LOAD ORCHESTRATION =====
 window.addEventListener('DOMContentLoaded', () => {
   const hero = document.querySelector('.hero-content');

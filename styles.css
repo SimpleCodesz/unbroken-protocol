@@ -41,6 +41,7 @@
   --radius: 18px;
   --radius-sm: 12px;
   --radius-pill: 980px;
+  --radius-section: 24px;
 
   /* Apple typography */
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -508,6 +509,8 @@ img { max-width: 100%; display: block; }
 .problems {
   padding: var(--space-4xl) 0;
   background: var(--bg-grey);
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== CAROUSEL ===== */
@@ -650,8 +653,13 @@ img { max-width: 100%; display: block; }
 
 /* ===== PHILOSOPHY QUOTE ===== */
 .quote-section {
-  padding: var(--space-4xl) 0;
+  padding: calc(var(--space-4xl) + var(--radius-section)) 0;
   background: var(--bg-dark);
+  border-radius: var(--radius-section);
+  position: relative;
+  z-index: 2;
+  margin-top: calc(-1 * var(--radius-section));
+  margin-bottom: calc(-1 * var(--radius-section));
 }
 
 .big-quote {
@@ -674,6 +682,8 @@ img { max-width: 100%; display: block; }
 .method {
   padding: var(--space-4xl) 0;
   background: var(--bg-white);
+  position: relative;
+  z-index: 1;
 }
 
 .race-track {
@@ -1019,8 +1029,13 @@ img { max-width: 100%; display: block; }
 
 /* ===== IS THIS FOR YOU ===== */
 .for-you {
-  padding: var(--space-4xl) 0;
+  padding: calc(var(--space-4xl) + var(--radius-section)) 0;
   background: var(--bg-dark);
+  border-radius: var(--radius-section);
+  position: relative;
+  z-index: 2;
+  margin-top: calc(-1 * var(--radius-section));
+  margin-bottom: calc(-1 * var(--radius-section));
 }
 
 .for-you .section-tag {
@@ -1081,6 +1096,8 @@ img { max-width: 100%; display: block; }
 .pricing {
   padding: var(--space-4xl) 0;
   background: var(--bg-white);
+  position: relative;
+  z-index: 1;
 }
 
 .pricing-cards-row {
@@ -1263,6 +1280,8 @@ img { max-width: 100%; display: block; }
 .testimonials {
   padding: var(--space-4xl) 0;
   background: var(--bg-ivory);
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-card {
@@ -1798,9 +1817,13 @@ img { max-width: 100%; display: block; }
 
 /* ===== FOOTER HERO ===== */
 .footer-hero {
-  padding: 80px 0 40px;
+  padding: calc(80px + var(--radius-section)) 0 40px;
   overflow: hidden;
   background: var(--bg-dark);
+  border-radius: var(--radius-section) var(--radius-section) 0 0;
+  position: relative;
+  z-index: 2;
+  margin-top: calc(-1 * var(--radius-section));
 }
 
 .big-logo-text {
@@ -1898,6 +1921,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 768px) {
+  :root { --radius-section: 16px; }
   .hero-content { padding: 80px 24px 0; }
   .hero h1 { font-size: 30px; }
   .hero-ctas { flex-direction: column; align-items: center; }
@@ -1948,6 +1972,51 @@ img { max-width: 100%; display: block; }
 .scroll-reveal.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Sections with child staggers — parent does opacity only, children do their own transforms */
+.for-you.scroll-reveal,
+.pricing.scroll-reveal,
+.about.scroll-reveal,
+.faq.scroll-reveal,
+.method.scroll-reveal,
+.coaching.scroll-reveal,
+.testimonials.scroll-reveal,
+.problems.scroll-reveal,
+.blog-section.scroll-reveal {
+  transform: none;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===== STAGGERED CHILD REVEAL ===== */
+.stagger-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.stagger-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* For-You list items — horizontal slide */
+.for-you-col li.stagger-reveal {
+  transform: translateX(-16px);
+}
+
+.for-you-col li.stagger-reveal.revealed {
+  transform: translateX(0);
+}
+
+/* Pricing cards — scale + lift */
+.pricing-card-v2.stagger-reveal {
+  transform: translateY(24px) scale(0.97);
+}
+
+.pricing-card-v2.stagger-reveal.revealed {
+  transform: translateY(0) scale(1);
 }
 
 /* ===== FOCUS-VISIBLE — KEYBOARD ACCESSIBILITY ===== */
@@ -2374,8 +2443,10 @@ img { max-width: 100%; display: block; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .scroll-reveal {
+  .scroll-reveal,
+  .stagger-reveal {
     opacity: 1;
     transform: none;
+    transition: none;
   }
 }
