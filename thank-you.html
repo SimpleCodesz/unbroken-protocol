@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Received — The Unbroken Protocol</title>
+  <meta name="description" content="Thank you for your application. Abraham Spring will review it personally within 48 hours.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#C47A2A">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/abraham.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      background: #1D1D1F;
+      color: #F5F5F7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+      padding: 24px;
+    }
+    .thank-you-container {
+      max-width: 560px;
+      text-align: center;
+    }
+    .check-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(196, 122, 42, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+    }
+    .check-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+    h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 40px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .subtitle {
+      color: #B8B8BD;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    /* Steps */
+    .steps {
+      text-align: left;
+      margin-bottom: 48px;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .step:first-child { border-top: 1px solid #2a2a2a; }
+    .step-number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #C47A2A;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .step-content h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #F5F5F7;
+    }
+    .step-content p {
+      font-size: 15px;
+      color: #86868B;
+      line-height: 1.5;
+    }
+
+    /* While you wait */
+    .while-you-wait {
+      margin-bottom: 48px;
+    }
+    .while-you-wait h2 {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #C47A2A;
+      margin-bottom: 20px;
+    }
+    .resource-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .resource-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: #2a2a2a;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #F5F5F7;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .resource-link:hover { background: #333; }
+    .resource-link .icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      background: #C47A2A;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 980px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .back-btn:hover { background: #a8661f; }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 28px; }
+      .resource-links { grid-template-columns: 1fr; }
+      .subtitle { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="thank-you-container">
+    <div class="check-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#C47A2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <h1>Application received</h1>
+    <p class="subtitle">Thank you for taking the first step. Abraham reviews every application personally — you'll hear back within 48 hours.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Application review</h3>
+          <p>Abraham reads your application and assesses alignment with the coaching methodology.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Personal response</h3>
+          <p>You'll receive an email within 48 hours with next steps or a follow-up question.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Discovery call</h3>
+          <p>A no-pressure conversation to explore your goals and determine mutual fit.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="while-you-wait">
+      <h2>While you wait</h2>
+      <div class="resource-links">
+        <a href="https://open.spotify.com/show/2NaEjPL1jUODb9yCyeVXcz" target="_blank" rel="noopener" class="resource-link">
+          <span class="icon">🎙️</span> Listen to the Podcast
+        </a>
+        <a href="https://www.amazon.co.uk/Unbroken-Protocol-Foundation-Recovery-Led-Grounded-ebook/dp/B0G5M1TKYQ" target="_blank" rel="noopener" class="resource-link">
+          <span class="icon">📖</span> Read the Book
+        </a>
+        <a href="https://medium.com/@abrahamspring" target="_blank" rel="noopener" class="resource-link">
+          <span class="icon">✍️</span> Read on Medium
+        </a>
+        <a href="https://www.instagram.com/abrahamspring_/" target="_blank" rel="noopener" class="resource-link">
+          <span class="icon">📸</span> Follow on Instagram
+        </a>
+      </div>
+    </div>
+
+    <a href="/" class="back-btn">Back to The Unbroken Protocol</a>
+  </div>
+</body>
+</html>

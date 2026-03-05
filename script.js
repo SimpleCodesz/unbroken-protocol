@@ -242,9 +242,7 @@ if (applicationForm) {
     })
     .then(function(response) {
       if (response.ok) {
-        applicationForm.style.display = 'none';
-        formSuccess.style.display = 'block';
-        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        window.location.href = '/thank-you';
       } else {
         if (submitBtn) {
           submitBtn.innerHTML = 'Submit Application <span class="btn-arrow">&rsaquo;</span>';
