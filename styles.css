@@ -1317,8 +1317,18 @@ img { max-width: 100%; display: block; }
 .testimonial-attribution {
   margin-top: auto;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
 }
 
 .testimonial-name {
