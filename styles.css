@@ -1368,21 +1368,32 @@ img { max-width: 100%; display: block; }
 .testimonial-video-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: var(--accent);
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   text-decoration: none;
   margin-bottom: 20px;
-  padding: 8px 0;
-  border-bottom: 2px solid var(--accent);
-  transition: opacity 0.2s;
+  padding: 10px 0;
+  transition: color 0.2s;
 }
 .testimonial-video-link:hover {
-  opacity: 0.75;
+  color: #e09540;
 }
 .testimonial-video-link svg {
   flex-shrink: 0;
+}
+/* Bright link on dark cards */
+.testimonial-dark .testimonial-video-link {
+  color: #fff;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 4px;
+}
+.testimonial-dark .testimonial-video-link svg {
+  color: var(--accent);
+}
+.testimonial-dark .testimonial-video-link:hover {
+  color: var(--accent);
 }
 
 /* ===== APPLY / CTA ===== */
