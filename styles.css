@@ -2631,88 +2631,13 @@ img { max-width: 100%; display: block; }
 .video-play-overlay svg { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
 .video-embed-wrap.playing .video-play-overlay { opacity: 0; pointer-events: none; }
 
-/* ===== TRUST BAR (below hero) ===== */
-.trust-bar {
-  padding: 20px 0;
-  background: var(--bg-dark);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  overflow: hidden;
-}
-.trust-bar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-.trust-bar-label {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--text-on-dark-sub);
-  white-space: nowrap;
-}
-.trust-bar-logos {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-.trust-bar-item {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.45);
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  transition: color 0.3s;
-}
-.trust-bar-item:hover { color: rgba(255,255,255,0.8); }
-.trust-bar-divider {
-  width: 1px;
-  height: 16px;
-  background: rgba(255,255,255,0.12);
-}
-
-@media (max-width: 768px) {
-  .trust-bar-inner { gap: 16px; flex-direction: column; }
-  .trust-bar-logos { gap: 20px; flex-wrap: wrap; justify-content: center; }
-  .trust-bar-item { font-size: 13px; }
-  .trust-bar-divider { display: none; }
-  .partners-ticker-set { gap: 40px; }
-}
-
-/* ===== AS FEATURED IN BAR ===== */
-.featured-in {
-  padding: 48px 0;
-  background: var(--bg-grey);
-  border-top: 1px solid var(--border);
-}
-.featured-in-heading {
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  text-align: center;
-  margin-bottom: 24px;
-}
-.featured-in-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 48px;
-  flex-wrap: wrap;
-}
-.featured-in-name {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
+/* partner-name links inherit typography, just remove underline */
+a.partner-name {
+  text-decoration: none;
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  transition: opacity 0.3s;
 }
+a.partner-name:hover { opacity: 0.6; }
 
 /* ===== REDUCED MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
