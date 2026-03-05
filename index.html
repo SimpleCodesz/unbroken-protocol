@@ -24,10 +24,20 @@
   <meta name="twitter:description" content="Stop training on a broken battery. The R.A.C.E. Framework is a nervous-system-first approach to sustainable high performance for triathletes and athletes in the UK.">
   <meta name="twitter:image" content="https://abrahamspring.co.uk/assets/abraham.png">
 
+  <meta name="robots" content="index, follow">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#C47A2A">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/abraham.png">
+  <link rel="apple-touch-icon" href="/assets/abraham.png">
+
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  </noscript>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -196,6 +206,29 @@
             }
           }
         ]
+      },
+      {
+        "@type": "Book",
+        "@id": "https://abrahamspring.co.uk/#book",
+        "name": "The Unbroken Protocol: Foundation Version",
+        "author": { "@id": "https://abrahamspring.co.uk/#person" },
+        "url": "https://www.amazon.co.uk/Unbroken-Protocol-Foundation-Recovery-Led-Grounded-ebook/dp/B0G5M1TKYQ",
+        "bookFormat": "EBook",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Rob Millar" },
+        "reviewBody": "Abraham has been excellent to work with over the last six months, providing an approach to training that covers not only all aspects of triathlon training, but also focuses on recovery, diet, sleep and meditation to deliver a truly holistic solution.",
+        "itemReviewed": { "@id": "https://abrahamspring.co.uk/#business" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Simon" },
+        "reviewBody": "He has loads of emotional intelligence, is a really talented coach and always understands the context you're in when you arrive for a lesson. My sessions with Abraham are the highlight of my week.",
+        "itemReviewed": { "@id": "https://abrahamspring.co.uk/#business" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
       }
     ]
   }
@@ -203,8 +236,10 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
+
   <!-- ===== NAVBAR ===== -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
     <div class="nav-pill">
       <a href="#" class="nav-logo">The Unbroken Protocol</a>
       <div class="nav-links" id="navLinks">
@@ -226,7 +261,7 @@
   </nav>
 
   <!-- ===== MOBILE MENU ===== -->
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
     <a href="#problems">The Problem</a>
     <a href="#method">The Method</a>
     <a href="#coaching">Coaching</a>
@@ -237,9 +272,11 @@
     <a href="#apply-form" class="nav-cta">Book a Discovery Call</a>
   </div>
 
+  <main id="main-content">
+
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+    <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" poster="assets/abraham.png">
       <source src="assets/hero-video.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
@@ -1060,6 +1097,16 @@
     </div>
   </section>
 
+  </main>
+
+  <!-- ===== STICKY CTA BAR ===== -->
+  <div class="sticky-cta-bar" id="stickyCta" aria-hidden="true">
+    <div class="sticky-cta-inner">
+      <span class="sticky-cta-text">Limited spots available</span>
+      <a href="#apply-form" class="sticky-cta-btn">Apply Now <span class="btn-arrow">&rsaquo;</span></a>
+    </div>
+  </div>
+
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
@@ -1098,7 +1145,7 @@
   </footer>
 
   <!-- ===== EMAIL SIGNUP POPUP ===== -->
-  <div class="popup-overlay" id="emailPopup">
+  <div class="popup-overlay" id="emailPopup" role="dialog" aria-modal="true" aria-label="Newsletter signup">
     <div class="popup-card">
       <button class="popup-close" id="popupClose" aria-label="Close popup">&times;</button>
       <div class="popup-icon">

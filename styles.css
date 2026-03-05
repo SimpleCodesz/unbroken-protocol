@@ -25,7 +25,7 @@
   --text-secondary: #6E6E73;
   --text-tertiary: #86868B;
   --text-on-dark: #F5F5F7;
-  --text-on-dark-sub: #A1A1A6;
+  --text-on-dark-sub: #B8B8BD;
 
   --dark: #1D1D1F;
   --dark-card: #1a1a1a;
@@ -75,6 +75,31 @@ body {
 
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; }
+
+/* Skip Navigation */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  z-index: 10001;
+  font-weight: 600;
+  font-size: 14px;
+  transition: top 0.2s;
+}
+.skip-nav:focus {
+  top: 16px;
+}
+
+/* Global Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 
 .container {
   max-width: 980px;
@@ -137,6 +162,10 @@ img { max-width: 100%; display: block; }
 .nav-links a:hover {
   color: white;
   background: rgba(255,255,255,0.08);
+}
+.nav-links a.nav-active {
+  color: white;
+  background: rgba(196, 122, 42, 0.2);
 }
 
 .nav-divider-after {
@@ -2261,6 +2290,58 @@ img { max-width: 100%; display: block; }
     width: 100%;
     padding: 16px;
   }
+}
+
+/* ===== STICKY CTA BAR ===== */
+.sticky-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(196, 122, 42, 0.2);
+  padding: 12px 0;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sticky-cta-bar.visible {
+  transform: translateY(0);
+}
+.sticky-cta-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.sticky-cta-text {
+  color: var(--text-on-dark-sub);
+  font-size: 14px;
+  font-weight: 500;
+}
+.sticky-cta-btn {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+.sticky-cta-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+@media (max-width: 768px) {
+  .sticky-cta-text { display: none; }
+  .sticky-cta-inner { justify-content: center; }
+  .sticky-cta-btn { width: 100%; text-align: center; padding: 14px; }
 }
 
 /* ===== REDUCED MOTION ===== */

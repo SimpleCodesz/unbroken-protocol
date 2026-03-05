@@ -6,27 +6,34 @@ mobileToggle?.addEventListener('click', () => {
   const isOpen = mobileMenu.style.display === 'flex';
   mobileMenu.style.display = isOpen ? 'none' : 'flex';
   mobileToggle.classList.toggle('open', !isOpen);
+  mobileToggle.setAttribute('aria-expanded', !isOpen);
+  mobileMenu.setAttribute('aria-hidden', isOpen);
 });
 
 mobileMenu?.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
     mobileMenu.style.display = 'none';
     mobileToggle.classList.remove('open');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
   });
 });
 
 // ===== FAQ ACCORDION =====
 document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.setAttribute('aria-expanded', 'false');
   btn.addEventListener('click', () => {
     const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
 
     item.closest('.faq-list').querySelectorAll('.faq-item').forEach(i => {
       i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
     });
 
     if (!isOpen) {
       item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
     }
   });
 });
@@ -376,4 +383,105 @@ if (leadForm) {
       });
     });
   }
+})();
+
+// ===== STICKY CTA BAR =====
+(function() {
+  var stickyCta = document.getElementById('stickyCta');
+  var hero = document.querySelector('.hero');
+  var applyForm = document.getElementById('apply-form');
+  if (!stickyCta || !hero) return;
+
+  var stickyObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.target === hero) {
+        // Show sticky when hero is NOT visible
+        if (!entry.isIntersecting) {
+          stickyCta.classList.add('visible');
+          stickyCta.setAttribute('aria-hidden', 'false');
+        } else {
+          stickyCta.classList.remove('visible');
+          stickyCta.setAttribute('aria-hidden', 'true');
+        }
+      }
+    });
+  }, { threshold: 0 });
+
+  stickyObserver.observe(hero);
+
+  // Hide when user reaches the application form
+  if (applyForm) {
+    var formObserver = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        stickyCta.classList.remove('visible');
+        stickyCta.setAttribute('aria-hidden', 'true');
+      }
+    }, { threshold: 0.1 });
+    formObserver.observe(applyForm);
+  }
+})();
+
+// ===== ACTIVE NAV HIGHLIGHTING =====
+(function() {
+  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  var sections = [];
+  navLinks.forEach(function(link) {
+    var target = document.querySelector(link.getAttribute('href'));
+    if (target) sections.push({ el: target, link: link });
+  });
+
+  function updateActiveNav() {
+    var scrollPos = window.scrollY + 120;
+    var activeLink = null;
+    sections.forEach(function(s) {
+      if (s.el.offsetTop <= scrollPos) activeLink = s.link;
+    });
+    navLinks.forEach(function(l) { l.classList.remove('nav-active'); });
+    if (activeLink) activeLink.classList.add('nav-active');
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+})();
+
+// ===== EXIT-INTENT TRIGGER =====
+(function() {
+  var popup = document.getElementById('emailPopup');
+  if (!popup) return;
+  var exitTriggered = false;
+
+  document.addEventListener('mouseout', function(e) {
+    if (exitTriggered) return;
+    if (localStorage.getItem('popup_dismissed')) return;
+    if (localStorage.getItem('popup_subscribed')) return;
+    if (popup.classList.contains('active')) return;
+
+    if (e.clientY <= 5 && e.relatedTarget === null) {
+      exitTriggered = true;
+      popup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+})();
+
+// ===== POPUP FOCUS TRAP =====
+(function() {
+  var popup = document.getElementById('emailPopup');
+  if (!popup) return;
+
+  popup.addEventListener('keydown', function(e) {
+    if (e.key !== 'Tab') return;
+    var focusable = popup.querySelectorAll('button, input, [href], [tabindex]:not([tabindex="-1"])');
+    if (focusable.length === 0) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
 })();

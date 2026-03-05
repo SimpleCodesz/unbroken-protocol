@@ -1,0 +1,15 @@
+[build]
+  publish = "."
+
+# Redirect Netlify subdomain to custom domain
+[[redirects]]
+  from = "https://whimsical-gumdrop-e0adcb.netlify.app/*"
+  to = "https://abrahamspring.co.uk/:splat"
+  status = 301
+  force = true
+
+# Clean URL redirect
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301

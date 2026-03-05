@@ -1,0 +1,21 @@
+{
+  "name": "The Unbroken Protocol",
+  "short_name": "Unbroken",
+  "description": "Recovery-led performance coaching by Abraham Spring. The R.A.C.E. Framework for triathletes and athletes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1D1D1F",
+  "theme_color": "#C47A2A",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

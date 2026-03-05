@@ -1,4 +1,21 @@
 User-agent: *
 Allow: /
 
+# AI Search Bots (allow indexing)
+User-agent: OAI-SearchBot
+Allow: /
+
+# AI Training Bots (block content scraping)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
 Sitemap: https://abrahamspring.co.uk/sitemap.xml
