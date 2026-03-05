@@ -435,10 +435,12 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===== PARTNERS ===== */
+/* ===== PARTNERS LOGO TICKER ===== */
 .partners {
   padding: 48px 0;
   background: var(--bg-grey);
   border-top: 1px solid var(--border);
+  overflow: hidden;
 }
 
 .partners-heading {
@@ -452,6 +454,46 @@ img { max-width: 100%; display: block; }
   margin-bottom: 24px;
 }
 
+.partners-ticker {
+  display: flex;
+  width: max-content;
+  animation: partnerScroll 25s linear infinite;
+}
+.partners-ticker:hover { animation-play-state: paused; }
+
+.partners-ticker-set {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  padding: 0 32px;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  opacity: 0.5;
+  filter: grayscale(1);
+  transition: opacity 0.3s, filter 0.3s;
+}
+.partner-logo:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
+.partner-logo svg { flex-shrink: 0; }
+
+@keyframes partnerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Legacy fallback */
 .partners-row {
   display: flex;
   align-items: center;
@@ -1934,6 +1976,8 @@ img { max-width: 100%; display: block; }
   .stat-label { font-size: 11px; }
   .partners-row { gap: 28px; }
   .partner-name { font-size: 16px; }
+  .partners-ticker-set { gap: 40px; padding: 0 20px; }
+  .partner-logo { font-size: 16px; }
 
   .race-card { min-width: 320px; max-width: 320px; padding: 32px; }
   .problem-card { min-width: 320px; max-width: 320px; padding: 32px; }
@@ -2436,6 +2480,251 @@ img { max-width: 100%; display: block; }
   .sticky-cta-btn { width: 100%; text-align: center; padding: 14px; }
 }
 
+/* ===== R.A.C.E. FRAMEWORK DIAGRAM ===== */
+.race-diagram {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  max-width: 720px;
+  margin: 0 auto var(--space-3xl);
+  position: relative;
+}
+.race-diagram::before {
+  content: 'R.A.C.E.';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+  background: var(--bg-white);
+  z-index: 2;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 8px var(--bg-white);
+}
+
+.race-quadrant {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s;
+}
+.race-quadrant:hover {
+  transform: scale(1.02);
+  z-index: 1;
+}
+.race-quadrant:nth-child(1) {
+  background: #EEF5F5;
+  border-radius: var(--radius) 0 0 0;
+}
+.race-quadrant:nth-child(2) {
+  background: #F0F5EE;
+  border-radius: 0 var(--radius) 0 0;
+}
+.race-quadrant:nth-child(3) {
+  background: #FDF5EC;
+  border-radius: 0 0 0 var(--radius);
+}
+.race-quadrant:nth-child(4) {
+  background: #F3F0F0;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.race-quadrant-letter {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+.race-quadrant:nth-child(1) .race-quadrant-letter { color: var(--teal); }
+.race-quadrant:nth-child(2) .race-quadrant-letter { color: #3A7D44; }
+.race-quadrant:nth-child(3) .race-quadrant-letter { color: var(--accent); }
+.race-quadrant:nth-child(4) .race-quadrant-letter { color: var(--text-primary); }
+
+.race-quadrant-name {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.race-quadrant-desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Diagram scroll reveal */
+.race-quadrant.stagger-reveal {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.race-quadrant.stagger-reveal.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 600px) {
+  .race-diagram { grid-template-columns: 1fr; gap: 0; }
+  .race-quadrant { border-radius: 0 !important; }
+  .race-quadrant:first-child { border-radius: var(--radius) var(--radius) 0 0 !important; }
+  .race-quadrant:last-child { border-radius: 0 0 var(--radius) var(--radius) !important; }
+  .race-diagram::before {
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .race-quadrant { padding: 28px 24px; }
+}
+
+/* ===== MID-PAGE CTA BREAK ===== */
+.midpage-cta {
+  padding: var(--space-3xl) 0;
+  background: var(--bg-grey);
+  text-align: center;
+}
+.midpage-cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.midpage-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.midpage-cta-desc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* ===== GUARANTEE BADGE ===== */
+.guarantee-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(196, 122, 42, 0.08);
+  border: 1px solid rgba(196, 122, 42, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  margin-top: 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.guarantee-badge svg { flex-shrink: 0; }
+
+.pricing .guarantee-badge {
+  display: flex;
+  justify-content: center;
+  margin: 24px auto 0;
+}
+.apply-card .guarantee-badge {
+  margin-top: 20px;
+}
+
+/* ===== RONALDO VIDEO EMBED ===== */
+.video-embed-wrap {
+  position: relative;
+  display: inline-flex;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 20px;
+  cursor: pointer;
+  max-width: 100%;
+}
+.video-embed-wrap video {
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  border-radius: var(--radius-sm);
+}
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  transition: background 0.3s;
+  border-radius: var(--radius-sm);
+}
+.video-play-overlay:hover { background: rgba(0,0,0,0.2); }
+.video-play-overlay svg { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
+.video-embed-wrap.playing .video-play-overlay { opacity: 0; pointer-events: none; }
+
+/* ===== TRUST BAR (below hero) ===== */
+.trust-bar {
+  padding: 20px 0;
+  background: var(--bg-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+.trust-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.trust-bar-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-on-dark-sub);
+  white-space: nowrap;
+}
+.trust-bar-logos {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.trust-bar-item {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+.trust-bar-item:hover { color: rgba(255,255,255,0.8); }
+.trust-bar-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255,255,255,0.12);
+}
+
+@media (max-width: 768px) {
+  .trust-bar-inner { gap: 16px; flex-direction: column; }
+  .trust-bar-logos { gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .trust-bar-item { font-size: 13px; }
+  .trust-bar-divider { display: none; }
+  .partners-ticker-set { gap: 40px; }
+}
+
 /* ===== REDUCED MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -2444,9 +2733,11 @@ img { max-width: 100%; display: block; }
     transition-duration: 0.01ms !important;
   }
   .scroll-reveal,
-  .stagger-reveal {
+  .stagger-reveal,
+  .race-quadrant.stagger-reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
+  .partners-ticker { animation: none; }
 }

@@ -181,7 +181,7 @@ const staggerConfig = {
   '.pricing':       { children: '.section-tag, .section-title-lg, .section-desc, .pricing-card-v2', stagger: 100 },
   '.about':         { children: '.section-tag, .section-title-lg, .about-detail', stagger: 80 },
   '.faq':           { children: '.section-title-lg, .faq-group', stagger: 120 },
-  '.method':        { children: '.section-tag, .section-title-lg, .section-desc', stagger: 80 },
+  '.method':        { children: '.section-tag, .section-title-lg, .section-desc, .race-diagram', stagger: 80 },
   '.coaching':      { children: '.section-tag, .section-title-lg', stagger: 80 },
   '.testimonials':  { children: '.section-tag, .section-title-lg, .section-desc', stagger: 80 },
   '.problems':      { children: '.section-tag, .section-title-lg, .section-desc', stagger: 80 },
@@ -565,6 +565,61 @@ if (leadForm) {
   });
 })();
 
+// ===== R.A.C.E. DIAGRAM SCROLL ANIMATION =====
+(function() {
+  var diagram = document.querySelector('.race-diagram');
+  if (!diagram) return;
+  var quadrants = diagram.querySelectorAll('.race-quadrant');
+  quadrants.forEach(function(q) { q.classList.add('stagger-reveal'); });
+
+  var diagramObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      quadrants.forEach(function(q, i) {
+        q.style.transitionDelay = (i * 150) + 'ms';
+        requestAnimationFrame(function() { q.classList.add('revealed'); });
+      });
+      diagramObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.2 });
+  diagramObserver.observe(diagram);
+})();
+
+// ===== RONALDO VIDEO PLAYER =====
+(function() {
+  var wrap = document.getElementById('ronaldoVideoWrap');
+  var video = document.getElementById('ronaldoVideo');
+  var playBtn = document.getElementById('ronaldoPlayBtn');
+  if (!wrap || !video || !playBtn) return;
+
+  playBtn.addEventListener('click', function() {
+    if (video.paused) {
+      video.play();
+      wrap.classList.add('playing');
+      video.setAttribute('controls', 'true');
+    }
+  });
+
+  video.addEventListener('pause', function() {
+    wrap.classList.remove('playing');
+  });
+  video.addEventListener('ended', function() {
+    wrap.classList.remove('playing');
+    video.removeAttribute('controls');
+  });
+
+  // GA4 tracking
+  if (typeof gtag === 'function') {
+    var tracked = false;
+    video.addEventListener('play', function() {
+      if (!tracked) {
+        gtag('event', 'video_watch', { video: 'ronaldo_testimonial' });
+        tracked = true;
+      }
+    });
+  }
+})();
+
 // ===== GA4 CONVERSION EVENTS =====
 (function() {
   if (typeof gtag !== 'function') return;
@@ -586,14 +641,6 @@ if (leadForm) {
       gtag('event', 'pricing_click', { tier: tier.trim() });
     });
   });
-
-  // Track Ronaldo video watch
-  var videoLink = document.querySelector('a[href*="ronaldo-testimonial"]');
-  if (videoLink) {
-    videoLink.addEventListener('click', function() {
-      gtag('event', 'video_watch', { video: 'ronaldo_testimonial' });
-    });
-  }
 
   // Track blog article clicks
   document.querySelectorAll('.blog-card').forEach(function(card) {

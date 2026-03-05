@@ -306,6 +306,26 @@
     </div>
   </section>
 
+  <!-- ===== TRUST BAR ===== -->
+  <section class="trust-bar" aria-label="Trusted by athletes from">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <span class="trust-bar-label">Trusted by athletes from</span>
+        <div class="trust-bar-logos">
+          <span class="trust-bar-item">Hyrox</span>
+          <span class="trust-bar-divider"></span>
+          <span class="trust-bar-item">British Triathlon</span>
+          <span class="trust-bar-divider"></span>
+          <span class="trust-bar-item">IBJJF</span>
+          <span class="trust-bar-divider"></span>
+          <span class="trust-bar-item">Freeletics</span>
+          <span class="trust-bar-divider"></span>
+          <span class="trust-bar-item">CrossFit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CREDIBILITY BAR ===== -->
   <section class="stats-bar">
     <div class="container">
@@ -433,6 +453,30 @@
       <p class="section-tag">The Methodology</p>
       <h2 class="section-title-lg">The R.A.C.E. Framework&trade;</h2>
       <p class="section-desc">The R.A.C.E. Framework is a four-stage, recovery-led coaching methodology created by Abraham Spring. It stands for Recover, Align, Condition, Execute &mdash; starting with the nervous system and building outward to training, nutrition, and life structure. It is the alternative to extraction-based coaching.</p>
+
+      <!-- R.A.C.E. Visual Diagram -->
+      <div class="race-diagram" role="img" aria-label="R.A.C.E. Framework: Recover, Align, Condition, Execute">
+        <div class="race-quadrant">
+          <span class="race-quadrant-letter">R</span>
+          <span class="race-quadrant-name">Recover</span>
+          <span class="race-quadrant-desc">Regulate the nervous system. Fix sleep, breathing, and cortisol before touching training load.</span>
+        </div>
+        <div class="race-quadrant">
+          <span class="race-quadrant-letter">A</span>
+          <span class="race-quadrant-name">Align</span>
+          <span class="race-quadrant-desc">Match ambition to reality. Map your life season, capacity, and identity before setting goals.</span>
+        </div>
+        <div class="race-quadrant">
+          <span class="race-quadrant-letter">C</span>
+          <span class="race-quadrant-name">Condition</span>
+          <span class="race-quadrant-desc">Minimum effective dose. Eliminate junk volume and train with surgical precision.</span>
+        </div>
+        <div class="race-quadrant">
+          <span class="race-quadrant-letter">E</span>
+          <span class="race-quadrant-name">Execute</span>
+          <span class="race-quadrant-desc">Build systems that survive chaos. ADHD-compatible, willpower-free, life-proof structure.</span>
+        </div>
+      </div>
 
       <div class="carousel-wrap">
         <div class="carousel-track race-track">
@@ -647,10 +691,14 @@
               <span class="testimonial-result-label">Result:</span>
               <span>Local competitor to 3rd in the world &mdash; back-to-back IBJJF championships</span>
             </div>
-            <a href="/assets/ronaldo-testimonial.mp4" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:rgba(196,122,42,0.15);border:1px solid rgba(196,122,42,0.4);color:#fff;font-size:15px;font-weight:600;padding:12px 20px;border-radius:980px;margin-bottom:20px;text-decoration:none;">
-              <svg width="18" height="18" viewBox="0 0 16 16" fill="#C47A2A"><path d="M4 2v12l10-6z"/></svg>
-              Watch the full video
-            </a>
+            <div class="video-embed-wrap" id="ronaldoVideoWrap">
+              <video preload="metadata" playsinline id="ronaldoVideo">
+                <source src="/assets/ronaldo-testimonial.mp4" type="video/mp4">
+              </video>
+              <div class="video-play-overlay" id="ronaldoPlayBtn" aria-label="Play testimonial video">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" fill="rgba(196,122,42,0.9)" stroke="white" stroke-width="2"/><path d="M19 15v18l16-9z" fill="white"/></svg>
+              </div>
+            </div>
             <div class="testimonial-attribution">
               <img src="assets/ronaldo.jpg" alt="Ronaldo — IBJJF Competitor" class="testimonial-avatar" width="48" height="48" loading="lazy">
               <div>
@@ -705,6 +753,21 @@
         </div>
         <button class="carousel-arrow carousel-prev hidden" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
         <button class="carousel-arrow carousel-next" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MID-PAGE CTA ===== -->
+  <section class="midpage-cta">
+    <div class="container">
+      <div class="midpage-cta-inner">
+        <h2 class="midpage-cta-title">Ready to train differently?</h2>
+        <p class="midpage-cta-desc">Book a free, no-obligation discovery call. Abraham personally reviews every application.</p>
+        <a href="#apply-form" class="btn-primary">Book a Free Discovery Call <span class="btn-arrow">&rsaquo;</span></a>
+        <div class="guarantee-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          100% Free &mdash; No Obligation
+        </div>
       </div>
     </div>
   </section>
@@ -821,6 +884,10 @@
         <p>Working separately with a performance coach, nutritionist, sleep consultant, breathwork practitioner, and sports psychologist would cost &pound;2,000&ndash;&pound;4,000 per month. The Unbroken Protocol integrates all five into one relationship &mdash; with someone who has lived every discipline they coach.</p>
       </div>
       <p class="pricing-scarcity"><strong>Abraham works with a maximum of 12 clients at any time to maintain the depth and quality this work demands.</strong> Current availability: 3 Recover | 6 Condition | 2 Execute spots.</p>
+      <div class="guarantee-badge" style="margin: 24px auto 0; justify-content: center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        If you don&rsquo;t see measurable improvement in 30 days, we&rsquo;ll extend your programme free
+      </div>
     </div>
   </section>
 
@@ -850,6 +917,10 @@
           </div>
         </div>
         <a href="#apply-form" class="btn-primary btn-lg-apply">Start Your Application <span class="btn-arrow">&rsaquo;</span></a>
+        <div class="guarantee-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          100% Free Discovery Call &mdash; No Obligation
+        </div>
         <p class="apply-note">Abraham works with a maximum of 12 clients at any time to maintain the depth and quality this work demands. Availability is limited.</p>
       </div>
     </div>
@@ -880,31 +951,13 @@
             </div>
           </div>
 
-          <!-- Q1 -->
+          <!-- Q1: Biggest challenge (the most important question) -->
           <div class="form-group">
-            <label for="q1">What sport(s) do you train in and what&rsquo;s your current experience level?</label>
-            <textarea id="q1" name="sport-and-level" rows="3" required placeholder="e.g. Triathlon (age-group), 3 years training&hellip;"></textarea>
+            <label for="q2">What&rsquo;s the biggest challenge you&rsquo;re facing right now?</label>
+            <textarea id="q2" name="biggest-challenge" rows="3" required placeholder="e.g. burnout, broken sleep, training plateau, balancing sport and family&hellip;"></textarea>
           </div>
 
-          <!-- Q2 -->
-          <div class="form-group">
-            <label for="q2">What&rsquo;s the biggest challenge you&rsquo;re facing with your training or performance right now?</label>
-            <textarea id="q2" name="biggest-challenge" rows="3" required></textarea>
-          </div>
-
-          <!-- Q3 -->
-          <div class="form-group">
-            <label for="q3">What have you tried before that hasn&rsquo;t worked?</label>
-            <textarea id="q3" name="tried-before" rows="3" required></textarea>
-          </div>
-
-          <!-- Q4 -->
-          <div class="form-group">
-            <label for="q4">What does success look like for you in 6 months?</label>
-            <textarea id="q4" name="six-month-success" rows="3" required></textarea>
-          </div>
-
-          <!-- Q5: Tier selector -->
+          <!-- Q2: Tier selector -->
           <div class="form-group">
             <label>Which coaching tier interests you most?</label>
             <div class="tier-selector">
@@ -912,48 +965,35 @@
                 <input type="radio" name="tier-interest" value="Recover" required>
                 <span class="tier-option-card">
                   <strong>Recover</strong>
-                  <span>&pound;597/month</span>
+                  <span>&pound;597/mo</span>
                 </span>
               </label>
               <label class="tier-option">
                 <input type="radio" name="tier-interest" value="Condition">
                 <span class="tier-option-card">
                   <strong>Condition</strong>
-                  <span>&pound;997/month</span>
+                  <span>&pound;997/mo</span>
                 </span>
               </label>
               <label class="tier-option">
                 <input type="radio" name="tier-interest" value="Execute">
                 <span class="tier-option-card">
                   <strong>Execute</strong>
-                  <span>&pound;1,997/month</span>
+                  <span>&pound;1,997/mo</span>
+                </span>
+              </label>
+              <label class="tier-option">
+                <input type="radio" name="tier-interest" value="Not sure yet">
+                <span class="tier-option-card">
+                  <strong>Not sure</strong>
+                  <span>Let&rsquo;s discuss</span>
                 </span>
               </label>
             </div>
           </div>
 
-          <!-- Q6: Commitment -->
-          <div class="form-group">
-            <label>Are you ready to commit to a minimum 3-month partnership?</label>
-            <div class="radio-group">
-              <label class="radio-option">
-                <input type="radio" name="commitment" value="Yes" required>
-                <span>Yes, I&rsquo;m ready</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="commitment" value="I'd like to discuss">
-                <span>I&rsquo;d like to discuss</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Q7 -->
-          <div class="form-group">
-            <label for="q7">How did you find Abraham Spring?</label>
-            <input type="text" id="q7" name="how-found" placeholder="e.g. Instagram, podcast, referral&hellip;">
-          </div>
-
-          <button type="submit" class="btn-primary btn-full form-submit">Submit Application <span class="btn-arrow">&rsaquo;</span></button>
+          <button type="submit" class="btn-primary btn-full form-submit">Book Your Free Discovery Call <span class="btn-arrow">&rsaquo;</span></button>
+          <p style="text-align:center; margin-top:12px; font-size:13px; color: var(--text-on-dark-sub);">Takes 30 seconds &bull; No commitment required</p>
         </form>
 
         <!-- Success state -->
@@ -1115,16 +1155,56 @@
     </div>
   </section>
 
-  <!-- ===== PARTNERS ===== -->
+  <!-- ===== PARTNERS TICKER ===== -->
   <section class="partners">
     <div class="container">
       <p class="partners-heading">Proudly Partnered With</p>
-      <div class="partners-row">
-        <span class="partner-name">British Triathlon</span>
-        <span class="partner-name">SuperTri</span>
-        <span class="partner-name">Stamox</span>
-        <span class="partner-name">Sentia</span>
-        <span class="partner-name">Muto</span>
+    </div>
+    <div class="partners-ticker" aria-label="Partner organisations">
+      <div class="partners-ticker-set">
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7 3.5v7.64l-7 3.5-7-3.5V7.68l7-3.5z"/></svg>
+          British Triathlon
+        </span>
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          SuperTri
+        </span>
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Stamox
+        </span>
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 14.5v-9l7 4.5-7 4.5z"/></svg>
+          Sentia
+        </span>
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          Muto
+        </span>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="partners-ticker-set" aria-hidden="true">
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7 3.5v7.64l-7 3.5-7-3.5V7.68l7-3.5z"/></svg>
+          British Triathlon
+        </span>
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          SuperTri
+        </span>
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Stamox
+        </span>
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 14.5v-9l7 4.5-7 4.5z"/></svg>
+          Sentia
+        </span>
+        <span class="partner-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          Muto
+        </span>
       </div>
     </div>
   </section>
