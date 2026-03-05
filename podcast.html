@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8VF61J7PK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G8VF61J7PK');
+  </script>
+  <title>The Podcast — The Unbroken Protocol by Abraham Spring</title>
+  <meta name="description" content="Listen to The Unbroken Protocol podcast. Abraham Spring talks nervous system regulation, ADHD strategy, recovery science, and building systems that survive real life.">
+  <meta name="keywords" content="unbroken protocol podcast, triathlon podcast, nervous system podcast, ADHD athlete podcast, Abraham Spring podcast, recovery coaching podcast">
+  <meta name="author" content="Abraham Spring">
+  <link rel="canonical" href="https://abrahamspring.co.uk/podcast">
+  <meta property="og:title" content="The Podcast — The Unbroken Protocol">
+  <meta property="og:description" content="Abraham Spring talks nervous system regulation, ADHD strategy, recovery science, and building systems that survive real life.">
+  <meta property="og:image" content="https://abrahamspring.co.uk/assets/abraham.png">
+  <meta property="og:url" content="https://abrahamspring.co.uk/podcast">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#C47A2A">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/abraham.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PodcastSeries",
+    "name": "The Unbroken Protocol",
+    "description": "Nervous system regulation, ADHD strategy, recovery science, and building systems that survive real life. By Abraham Spring.",
+    "url": "https://abrahamspring.co.uk/podcast",
+    "author": {
+      "@type": "Person",
+      "name": "Abraham Spring",
+      "url": "https://abrahamspring.co.uk/"
+    },
+    "webFeed": "https://open.spotify.com/show/2NaEjPL1jUODb9yCyeVXcz"
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      background: #1D1D1F;
+      color: #F5F5F7;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Nav */
+    .page-nav {
+      padding: 20px 24px;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page-nav a { color: #C47A2A; text-decoration: none; font-size: 15px; font-weight: 500; }
+    .page-nav a:hover { text-decoration: underline; }
+    .nav-cta {
+      background: #C47A2A;
+      color: #fff !important;
+      padding: 10px 20px;
+      border-radius: 980px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-cta:hover { background: #a8661f; text-decoration: none !important; }
+
+    /* Hero */
+    .podcast-hero {
+      padding: 80px 24px 48px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .podcast-hero h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 52px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .podcast-hero p {
+      color: #B8B8BD;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .listen-platforms {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .platform-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      border-radius: 980px;
+      color: #F5F5F7;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .platform-btn:hover {
+      background: #333;
+      border-color: #C47A2A;
+    }
+    .platform-btn .icon { font-size: 18px; }
+
+    /* Episodes */
+    .episodes-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+    .episodes-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #C47A2A;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .episode-card {
+      background: #2a2a2a;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      border: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .episode-card:hover { border-color: #3a3a3a; }
+
+    .episode-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .episode-number {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(196, 122, 42, 0.15);
+      color: #C47A2A;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .episode-info { flex: 1; }
+    .episode-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      color: #F5F5F7;
+    }
+    .episode-meta {
+      font-size: 13px;
+      color: #86868B;
+    }
+    .episode-tag {
+      display: inline-block;
+      background: rgba(196, 122, 42, 0.12);
+      color: #C47A2A;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    /* Audio Player */
+    .episode-player {
+      width: 100%;
+    }
+    .episode-player audio {
+      width: 100%;
+      height: 40px;
+      border-radius: 8px;
+      outline: none;
+    }
+    /* Style the audio element for dark theme */
+    audio::-webkit-media-controls-panel {
+      background: #1a1a1a;
+    }
+
+    /* Now Playing indicator */
+    .now-playing {
+      border-color: #C47A2A !important;
+      background: linear-gradient(135deg, #2a2a2a 0%, rgba(196, 122, 42, 0.08) 100%);
+    }
+
+    /* Featured episode */
+    .episode-card.featured {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      border: 1px solid #3a3a3a;
+      padding: 32px;
+    }
+    .episode-card.featured .episode-number {
+      background: #C47A2A;
+      color: #fff;
+    }
+    .featured-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #C47A2A;
+      margin-bottom: 8px;
+    }
+
+    /* CTA */
+    .podcast-cta {
+      text-align: center;
+      padding: 60px 24px;
+      margin: 0 24px;
+      max-width: 800px;
+      margin: 0 auto;
+      border-top: 1px solid #2a2a2a;
+    }
+    .podcast-cta h2 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .podcast-cta p {
+      color: #86868B;
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #C47A2A;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 980px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: #a8661f; }
+
+    /* Footer */
+    .footer-mini {
+      border-top: 1px solid #2a2a2a;
+      text-align: center;
+      padding: 24px;
+      color: #86868B;
+      font-size: 14px;
+    }
+    .footer-mini a { color: #C47A2A; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .podcast-hero h1 { font-size: 32px; }
+      .podcast-hero { padding: 60px 20px 40px; }
+      .episode-header { flex-direction: column; gap: 8px; }
+      .episode-card { padding: 20px; }
+      .nav-cta { display: none; }
+      .listen-platforms { gap: 8px; }
+      .platform-btn { padding: 10px 14px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="page-nav">
+    <a href="/">&larr; The Unbroken Protocol</a>
+    <a href="/#apply-form" class="nav-cta">Book a Discovery Call</a>
+  </nav>
+
+  <div class="podcast-hero">
+    <h1>The Podcast</h1>
+    <p>Nervous system regulation, ADHD strategy, recovery science, and building systems that survive real life. No fluff. No filler.</p>
+    <div class="listen-platforms">
+      <a href="https://open.spotify.com/show/2NaEjPL1jUODb9yCyeVXcz" target="_blank" rel="noopener" class="platform-btn">
+        <span class="icon">🎧</span> Spotify
+      </a>
+      <a href="https://podcasts.apple.com" target="_blank" rel="noopener" class="platform-btn">
+        <span class="icon">🍎</span> Apple Podcasts
+      </a>
+    </div>
+  </div>
+
+  <div class="episodes-container">
+    <p class="episodes-label">All Episodes &middot; 16 episodes</p>
+
+    <!-- EP 1 — Intro (Featured) -->
+    <div class="episode-card featured">
+      <div class="featured-label">Start here</div>
+      <div class="episode-header">
+        <div class="episode-number">1</div>
+        <div class="episode-info">
+          <h2 class="episode-title">Welcome to The Unbroken Protocol</h2>
+          <p class="episode-meta">Intro <span class="episode-tag">Start Here</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/welcome-to-the-unbroken-protocol-intro.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 2 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">2</div>
+        <div class="episode-info">
+          <h2 class="episode-title">951 Days of Cold Showers and What It Has Done to Me</h2>
+          <p class="episode-meta">Recovery <span class="episode-tag">Nervous System</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/951-days-of-cold-showers-and-what-it-has-done-to-me.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 3 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">3</div>
+        <div class="episode-info">
+          <h2 class="episode-title">You Are Not Who You Think You Are</h2>
+          <p class="episode-meta">Psychology <span class="episode-tag">Identity</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/you-are-not-who-you-think-you-are.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 4 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">4</div>
+        <div class="episode-info">
+          <h2 class="episode-title">Why Triathletes Need Meditation More Than Training Plans</h2>
+          <p class="episode-meta">Mindfulness <span class="episode-tag">Triathlon</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/why-triathletes-need-meditation-more-than-training-plans.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 5 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">5</div>
+        <div class="episode-info">
+          <h2 class="episode-title">The Death of the Attention Athlete: The Rise of Nervous System Training</h2>
+          <p class="episode-meta">Nervous System <span class="episode-tag">Performance</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/the-death-of-the-attention-athlete-the-rise-of-nervous-system-training.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 6 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">6</div>
+        <div class="episode-info">
+          <h2 class="episode-title">Why Your Nervous System Doesn't Care About Your New Year's Goals</h2>
+          <p class="episode-meta">Nervous System <span class="episode-tag">Mindset</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/why-your-nervous-system-doesn-t-care-about-your-new-year-s-goals.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 7 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">7</div>
+        <div class="episode-info">
+          <h2 class="episode-title">The Real Way to Prepare for a Triathlon (If You Want to Still Be Healthy in 2026)</h2>
+          <p class="episode-meta">Training <span class="episode-tag">Triathlon</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/the-real-way-to-prepare-for-a-triathlon-if-you-want-to-still-be-healthy-in-2026.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 8 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">8</div>
+        <div class="episode-info">
+          <h2 class="episode-title">Wellness or Addiction? The Dark Psychology of Health Tracking</h2>
+          <p class="episode-meta">Psychology <span class="episode-tag">Wellness</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/wellness-or-addiction-the-dark-psychology-of-health-tracking.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 9 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">9</div>
+        <div class="episode-info">
+          <h2 class="episode-title">The Performance Identity Trap: Why Triathletes Can't Rest</h2>
+          <p class="episode-meta">Psychology <span class="episode-tag">Recovery</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/the-performance-identity-trap-why-triathletes-can-t-rest-2.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 10 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">10</div>
+        <div class="episode-info">
+          <h2 class="episode-title">Zone 2 Won't Save Your Knees</h2>
+          <p class="episode-meta">Training <span class="episode-tag">Strength</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/zone-2-won-t-save-your-knees.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 11 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">11</div>
+        <div class="episode-info">
+          <h2 class="episode-title">Motivation Is a Lie. You Need a System That Survives Real Life.</h2>
+          <p class="episode-meta">Systems <span class="episode-tag">R.A.C.E.</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/motivation-is-a-lie-you-need-a-system-that-survives-real-life.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 12 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">12</div>
+        <div class="episode-info">
+          <h2 class="episode-title">Social Media's Biggest Lie: Comparing Your Chapter 1 to Everyone's Chapter 20</h2>
+          <p class="episode-meta">Mindset <span class="episode-tag">Psychology</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/social-media-s-biggest-lie-comparing-your-chapter-1-to-everyone-s-chapter-20.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 13 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">13</div>
+        <div class="episode-info">
+          <h2 class="episode-title">You're Not Lazy &mdash; Your Brain Was Hijacked</h2>
+          <p class="episode-meta">Psychology <span class="episode-tag">Dopamine</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/you-re-not-lazy-your-brain-was-hijacked.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 14 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">14</div>
+        <div class="episode-info">
+          <h2 class="episode-title">The Dark Truth About ADHD, Productivity, and Modern Life</h2>
+          <p class="episode-meta">ADHD <span class="episode-tag">Neuroscience</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/the-dark-truth-about-adhd-productivity-and-modern-life.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 15 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">15</div>
+        <div class="episode-info">
+          <h2 class="episode-title">The Biggest Mistake I've Made: Treating Caffeine Like Recovery Instead of Debt</h2>
+          <p class="episode-meta">Recovery <span class="episode-tag">Sleep</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/the-biggest-mistake-i-ve-made-treating-caffeine-like-recovery-instead-of-debt.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- EP 16 -->
+    <div class="episode-card">
+      <div class="episode-header">
+        <div class="episode-number">16</div>
+        <div class="episode-info">
+          <h2 class="episode-title">Your Environment Is Designed to Make You Fail</h2>
+          <p class="episode-meta">Systems <span class="episode-tag">Environment</span></p>
+        </div>
+      </div>
+      <div class="episode-player">
+        <audio controls preload="none">
+          <source src="/assets/podcast/your-environment-is-designed-to-make-you-fail.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="podcast-cta">
+    <h2>Ready to stop training on a broken battery?</h2>
+    <p>The podcast is the philosophy. The coaching is the application.</p>
+    <a href="/#apply-form" class="cta-btn">Book a Free Discovery Call &rsaquo;</a>
+  </div>
+
+  <div class="footer-mini">
+    <p>&copy; 2026 Abraham Spring. <a href="/">The Unbroken Protocol</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></p>
+  </div>
+</body>
+</html>
