@@ -181,7 +181,7 @@ const staggerConfig = {
   '.pricing':       { children: '.section-tag, .section-title-lg, .section-desc, .pricing-card-v2', stagger: 100 },
   '.about':         { children: '.section-tag, .section-title-lg, .about-detail', stagger: 80 },
   '.faq':           { children: '.section-title-lg, .faq-group', stagger: 120 },
-  '.method':        { children: '.section-tag, .section-title-lg, .section-desc, .race-diagram', stagger: 80 },
+  '.method':        { children: '.section-tag, .section-title-lg, .section-desc', stagger: 80 },
   '.coaching':      { children: '.section-tag, .section-title-lg', stagger: 80 },
   '.testimonials':  { children: '.section-tag, .section-title-lg, .section-desc', stagger: 80 },
   '.problems':      { children: '.section-tag, .section-title-lg, .section-desc', stagger: 80 },
@@ -563,26 +563,6 @@ if (leadForm) {
       first.focus();
     }
   });
-})();
-
-// ===== R.A.C.E. DIAGRAM SCROLL ANIMATION =====
-(function() {
-  var diagram = document.querySelector('.race-diagram');
-  if (!diagram) return;
-  var quadrants = diagram.querySelectorAll('.race-quadrant');
-  quadrants.forEach(function(q) { q.classList.add('stagger-reveal'); });
-
-  var diagramObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      quadrants.forEach(function(q, i) {
-        q.style.transitionDelay = (i * 150) + 'ms';
-        requestAnimationFrame(function() { q.classList.add('revealed'); });
-      });
-      diagramObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.2 });
-  diagramObserver.observe(diagram);
 })();
 
 // ===== GA4 CONVERSION EVENTS =====

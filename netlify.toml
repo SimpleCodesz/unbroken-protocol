@@ -8,8 +8,13 @@
   status = 301
   force = true
 
-# Clean URL redirect
+# Clean URL redirects
 [[redirects]]
   from = "/index.html"
   to = "/"
   status = 301
+
+[[redirects]]
+  from = "/podcast"
+  to = "/podcast.html"
+  status = 200
