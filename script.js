@@ -483,3 +483,27 @@ if (leadForm) {
     }
   });
 })();
+
+/* ===== VIDEO TESTIMONIAL ===== */
+(function() {
+  var playBtns = document.querySelectorAll('.testimonial-play-btn');
+  playBtns.forEach(function(btn) {
+    var wrap = btn.closest('.testimonial-video-wrap');
+    var video = wrap.querySelector('.testimonial-video');
+    btn.addEventListener('click', function() {
+      if (video.paused) {
+        video.play();
+        btn.classList.add('hidden');
+      }
+    });
+    video.addEventListener('click', function() {
+      if (!video.paused) {
+        video.pause();
+        btn.classList.remove('hidden');
+      }
+    });
+    video.addEventListener('ended', function() {
+      btn.classList.remove('hidden');
+    });
+  });
+})();
