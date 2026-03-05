@@ -313,6 +313,10 @@ if (applicationForm) {
     })
     .then(function(response) {
       if (response.ok) {
+        if (typeof gtag === 'function') {
+          var tier = formData.get('tier-interest') || 'unknown';
+          gtag('event', 'application_submit', { tier: tier });
+        }
         window.location.href = '/thank-you';
       } else {
         if (submitBtn) {
@@ -353,6 +357,9 @@ if (leadForm) {
     })
     .then(function(response) {
       if (response.ok) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'lead_magnet_submit', { form: 'recovery_assessment' });
+        }
         leadForm.style.display = 'none';
         leadSuccess.style.display = 'block';
       } else {
@@ -431,6 +438,9 @@ if (leadForm) {
       })
       .then(function(response) {
         if (response.ok) {
+          if (typeof gtag === 'function') {
+            gtag('event', 'popup_subscribe');
+          }
           popupForm.style.display = 'none';
           popupSuccess.style.display = 'block';
           localStorage.setItem('popup_subscribed', '1');
@@ -553,4 +563,56 @@ if (leadForm) {
       first.focus();
     }
   });
+})();
+
+// ===== GA4 CONVERSION EVENTS =====
+(function() {
+  if (typeof gtag !== 'function') return;
+
+  // Track "Book a Discovery Call" / "Apply Now" CTA clicks
+  document.querySelectorAll('.nav-cta, .sticky-cta-btn, .btn-primary[href="#apply-form"], .hero-ctas .btn-primary').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      gtag('event', 'cta_click', {
+        cta_text: this.textContent.trim(),
+        cta_location: this.closest('nav') ? 'navbar' : this.closest('.sticky-cta') ? 'sticky_bar' : this.closest('.hero') ? 'hero' : 'page'
+      });
+    });
+  });
+
+  // Track pricing tier clicks
+  document.querySelectorAll('.pricing-cta').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var tier = this.dataset.tier || 'unknown';
+      gtag('event', 'pricing_click', { tier: tier.trim() });
+    });
+  });
+
+  // Track Ronaldo video watch
+  var videoLink = document.querySelector('a[href*="ronaldo-testimonial"]');
+  if (videoLink) {
+    videoLink.addEventListener('click', function() {
+      gtag('event', 'video_watch', { video: 'ronaldo_testimonial' });
+    });
+  }
+
+  // Track blog article clicks
+  document.querySelectorAll('.blog-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var title = this.querySelector('.blog-card-title');
+      gtag('event', 'blog_click', { article: title ? title.textContent.trim() : 'unknown' });
+    });
+  });
+
+  // Track scroll depth milestones (25%, 50%, 75%, 100%)
+  var milestones = [25, 50, 75, 100];
+  var fired = {};
+  window.addEventListener('scroll', function() {
+    var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    milestones.forEach(function(m) {
+      if (scrollPct >= m && !fired[m]) {
+        fired[m] = true;
+        gtag('event', 'scroll_depth', { depth: m + '%' });
+      }
+    });
+  }, { passive: true });
 })();
