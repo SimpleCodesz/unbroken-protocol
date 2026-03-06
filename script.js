@@ -380,7 +380,7 @@ if (leadForm) {
   });
 }
 
-// ===== EMAIL SIGNUP POPUP (20s delay) =====
+// ===== EMAIL SIGNUP POPUP (15s delay) =====
 (function() {
   var popup = document.getElementById('emailPopup');
   var closeBtn = document.getElementById('popupClose');
@@ -395,11 +395,11 @@ if (leadForm) {
   // Don't show if already subscribed
   if (localStorage.getItem('popup_subscribed')) return;
 
-  // Show after 20 seconds
+  // Show after 15 seconds
   setTimeout(function() {
     popup.classList.add('active');
     document.body.style.overflow = 'hidden';
-  }, 20000);
+  }, 15000);
 
   function closePopup() {
     popup.classList.remove('active');
