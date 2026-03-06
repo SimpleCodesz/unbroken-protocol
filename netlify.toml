@@ -18,3 +18,14 @@
   from = "/podcast"
   to = "/podcast.html"
   status = 200
+
+# Force fresh favicon (no long cache)
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/assets/icon-*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
